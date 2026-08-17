@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .glassmorphism {
+    background: rgba(19, 19, 19, 0.45);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(212, 175, 55, 0.3);
+  }
+  
+  .glow-saffron {
+    box-shadow: 0 0 40px rgba(255, 153, 51, 0.15);
+  }
+  
+  .glow-saffron:hover {
+    box-shadow: 0 0 60px rgba(255, 153, 51, 0.3);
+  }
+  
+  .text-glow {
+    text-shadow: 0 0 24px rgba(212, 175, 55, 0.5);
+  }
+}
+
+body {
+  background-color: #131313;
+  color: #e5e2e1;
+  font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Playfair Display', serif;
+}
