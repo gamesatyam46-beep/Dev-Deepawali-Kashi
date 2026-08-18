@@ -5,19 +5,19 @@ import { Clock, MapPin, Sparkles, Crown, Sun, Compass, Flame, Utensils, Gift } f
 export const ItineraryTimeline: React.FC = () => {
   const getIcon = (name: string) => {
     switch (name) {
-      case 'Crown': return <Crown className="w-5 h-5 text-[#241a00]" />;
-      case 'Sun': return <Sun className="w-5 h-5 text-[#241a00]" />;
-      case 'Compass': return <Compass className="w-5 h-5 text-[#241a00]" />;
-      case 'Flame': return <Flame className="w-5 h-5 text-[#241a00]" />;
-      case 'Sparkles': return <Sparkles className="w-5 h-5 text-[#241a00]" />;
-      case 'Utensils': return <Utensils className="w-5 h-5 text-[#241a00]" />;
-      case 'Gift': return <Gift className="w-5 h-5 text-[#241a00]" />;
-      default: return <Clock className="w-5 h-5 text-[#241a00]" />;
+      case 'Crown': return <Crown className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
+      case 'Sun': return <Sun className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
+      case 'Compass': return <Compass className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
+      case 'Flame': return <Flame className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
+      case 'Sparkles': return <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
+      case 'Utensils': return <Utensils className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
+      case 'Gift': return <Gift className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
+      default: return <Clock className="w-4 h-4 sm:w-5 sm:h-5 text-[#241a00]" />;
     }
   };
 
   return (
-    <section id="itinerary" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0e17] relative overflow-hidden border-t border-[#d4af37]/20">
+    <section id="itinerary" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0e17] relative overflow-hidden border-t border-[#d4af37]/20">
       <div className="max-w-5xl mx-auto">
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-3">
@@ -37,19 +37,19 @@ export const ItineraryTimeline: React.FC = () => {
           </p>
         </div>
 
-        {/* Timeline List */}
-        <div className="relative pl-6 sm:pl-10 space-y-8 before:absolute before:left-3 sm:before:left-5 before:top-3 before:bottom-3 before:w-0.5 before:bg-gradient-to-b before:from-[#f2ca50] before:via-[#d4af37] before:to-[#ff9933]/40">
+        {/* Timeline List with precise alignment */}
+        <div className="relative pl-8 sm:pl-14 space-y-8 before:absolute before:left-3.5 sm:before:left-5 before:top-4 before:bottom-4 before:w-0.5 before:bg-gradient-to-b before:from-[#f2ca50] before:via-[#d4af37] before:to-[#ff9933]/40">
           {ITINERARY_STEPS.map((step, idx) => (
             <div key={idx} className="relative group">
-              {/* Timeline Golden Marker */}
-              <div className="absolute -left-6 sm:-left-10 top-1.5 w-6 h-6 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#f2ca50] to-[#d4af37] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.6)] transform group-hover:scale-110 transition-transform">
-                <div className="scale-75 sm:scale-90">
+              {/* Timeline Golden Marker accurately centered on the vertical line */}
+              <div className="absolute -left-8 sm:-left-14 top-2 w-7 h-7 sm:w-10 sm:h-10 rounded-full bg-gradient-to-br from-[#f2ca50] to-[#d4af37] flex items-center justify-center shadow-[0_0_15px_rgba(212,175,55,0.6)] transform group-hover:scale-110 transition-transform z-10">
+                <div className="scale-90">
                   {getIcon(step.iconName)}
                 </div>
               </div>
 
               {/* Step Card */}
-              <div className="p-6 sm:p-7 rounded-2xl bg-[#101624]/90 border border-[#d4af37]/25 group-hover:border-[#d4af37]/60 shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-all duration-300 backdrop-blur-md">
+              <div className="p-5 sm:p-7 rounded-2xl bg-[#101624]/90 border border-[#d4af37]/25 group-hover:border-[#d4af37]/60 shadow-[0_10px_30px_rgba(0,0,0,0.6)] transition-all duration-300 backdrop-blur-md">
                 <div className="flex flex-wrap items-center justify-between gap-2 mb-3">
                   <div className="flex items-center gap-3">
                     <span className="font-serif font-bold text-base sm:text-lg text-[#f2ca50]">
@@ -65,7 +65,7 @@ export const ItineraryTimeline: React.FC = () => {
                   </div>
                 </div>
 
-                <h3 className="font-serif text-xl sm:text-2xl font-bold text-[#e5e2e1] mb-2 group-hover:text-[#ffe088] transition-colors">
+                <h3 className="font-serif text-lg sm:text-2xl font-bold text-[#e5e2e1] mb-2 group-hover:text-[#ffe088] transition-colors">
                   {step.title}
                 </h3>
 

@@ -1,29 +1,41 @@
-import React, { useState } from 'react';
-import { MessageCircle, CheckCircle, ShieldCheck, Flame, Users, Calendar, User, Phone, Sparkles, ArrowRight, ArrowLeft, AlertCircle, RefreshCw } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { MessageCircle, ShieldCheck, User, Phone, Sparkles, ArrowRight, Minus, Plus, CheckCircle2, Star, Clock } from 'lucide-react';
+import { PACKAGE_TIERS } from '../data/kashiData';
 
 const OFFICIAL_WHATSAPP_NUMBER = '+91 8840177339';
 const WHATSAPP_PHONE_RAW = '918840177339';
-const PRICE_PER_PERSON = 15000;
-const OFFICIAL_EVENT_DATE = '24 November 2026 (Kartik Purnima, Dev Deepawali)';
 
 interface BookingFormSectionProps {
   initialPersons?: number;
+  initialTierId?: string;
 }
 
-export const BookingFormSection: React.FC<BookingFormSectionProps> = ({ initialPersons = 2 }) => {
-  // Form State
+export const BookingFormSection: React.FC<BookingFormSectionProps> = ({
+  initialPersons = 2,
+  initialTierId = 'double-decker-boat'
+}) => {
+  // Tier selection state
+  const [selectedTierId, setSelectedTierId] = useState<string>(initialTierId);
+
+  // Form State (NO EMAIL per strict prompt requirements)
   const [fullName, setFullName] = useState('');
   const [whatsappNumber, setWhatsappNumber] = useState('');
   const [age, setAge] = useState('');
-  const [persons, setPersons] = useState(initialPersons);
+  const [persons, setPersons] = useState<number>(initialPersons);
   const [specialRequest, setSpecialRequest] = useState('');
-  const [agreedToTerms, setAgreedToTerms] = useState(false);
-
-  // Flow State: 'form' | 'review' | 'submitted'
-  const [flowStep, setFlowStep] = useState<'form' | 'review' | 'submitted'>('form');
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
 
-  const estimatedTotal = persons * PRICE_PER_PERSON;
+  useEffect(() => {
+    if (initialTierId) {
+      setSelectedTierId(initialTierId);
+    }
+  }, [initialTierId]);
+
+  const selectedTier = PACKAGE_TIERS.find((t) => t.id === selectedTierId) || PACKAGE_TIERS[1];
+  const pricePerPerson = selectedTier.price;
+  const totalBookingValue = persons * pricePerPerson;
+  const advanceRequired = totalBookingValue * 0.5;
+  const remainingBalance = totalBookingValue - advanceRequired;
 
   // Validation
   const validateForm = (): boolean => {
@@ -34,8 +46,8 @@ export const BookingFormSection: React.FC<BookingFormSectionProps> = ({ initialP
     }
 
     const cleanNumber = whatsappNumber.replace(/\D/g, '');
-    if (!cleanNumber || cleanNumber.length !== 10 || !/^[6-9]\d{9}$/.test(cleanNumber)) {
-      errs.whatsappNumber = 'Please enter a valid 10-digit Indian WhatsApp mobile number.';
+    if (!cleanNumber || cleanNumber.length < 10) {
+      errs.whatsappNumber = 'Please enter a valid 10-digit WhatsApp contact number.';
     }
 
     const numAge = parseInt(age, 10);
@@ -47,60 +59,53 @@ export const BookingFormSection: React.FC<BookingFormSectionProps> = ({ initialP
       errs.persons = 'Please select at least 1 person.';
     }
 
-    if (!agreedToTerms) {
-      errs.terms = 'Please accept the booking terms and conditions.';
-    }
-
     setErrors(errs);
     return Object.keys(errs).length === 0;
   };
 
-  // Generate WhatsApp Message URL
+  // Format INR currency
+  const formatCurrency = (val: number) => {
+    return val.toLocaleString('en-IN', {
+      minimumFractionDigits: val % 1 === 0 ? 0 : 2,
+      maximumFractionDigits: 2
+    });
+  };
+
+  // Exact WhatsApp Booking Message from Master Prompt Spec
   const generateWhatsAppUrl = (): string => {
     const cleanPhone = whatsappNumber.replace(/\D/g, '');
-    const message = `Namaste, I would like to book the Dev Deepawali Luxury Cruise.
+    const message = `Namaste, I want to book Dev Deepawali 2026.
 
 Booking Details:
 
 Name: ${fullName.trim()}
-Contact Number: +91 ${cleanPhone}
+Contact Number: ${cleanPhone}
 Age: ${age.trim()}
+Selected Ride: ${selectedTier.name}
 Number of Persons: ${persons}
-Booking Date: ${OFFICIAL_EVENT_DATE}
-Estimated Total: ₹${estimatedTotal.toLocaleString('en-IN')}
+
+Price Per Person/Unit: ₹${formatCurrency(pricePerPerson)}
+
+Total Booking Value: ₹${formatCurrency(totalBookingValue)}
+
+50% Advance Required: ₹${formatCurrency(advanceRequired)}
 
 Special Request:
 ${specialRequest.trim() || 'None'}
 
-Please confirm my booking and share the next steps.
+Please confirm availability and share the payment instructions.
 
 Thank you.`;
 
     return `https://wa.me/${WHATSAPP_PHONE_RAW}?text=${encodeURIComponent(message)}`;
   };
 
-  const handleProceedToReview = (e: React.FormEvent) => {
+  const handleBookingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (validateForm()) {
-      setFlowStep('review');
+      const url = generateWhatsAppUrl();
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
-  };
-
-  const handleOpenWhatsApp = () => {
-    const url = generateWhatsAppUrl();
-    window.open(url, '_blank', 'noopener,noreferrer');
-    setFlowStep('submitted');
-  };
-
-  const handleResetForm = () => {
-    setFlowStep('form');
-    setFullName('');
-    setWhatsappNumber('');
-    setAge('');
-    setPersons(2);
-    setSpecialRequest('');
-    setAgreedToTerms(false);
-    setErrors({});
   };
 
   return (
@@ -108,401 +113,329 @@ Thank you.`;
       id="booking-form"
       className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0d14] relative overflow-hidden border-t border-b border-[#d4af37]/30"
     >
-      {/* Background Image: Night Ghats with Subtle Navy Gradient */}
-      <div className="absolute inset-0 z-0">
-        <div
-          className="w-full h-full bg-cover bg-center opacity-25"
-          style={{
-            backgroundImage: `url('https://lh3.googleusercontent.com/aida-public/AB6AXuB1VJT4D_OZdQWRxa6Z3PvO7ekxcnXuMTsT_ZFlbZKaW7B5F9NdIsDfYSJOZNQJx-nIfXsRP6_pZmeNSnPkd6qW12-t0ozwKbYH0yk1hDHM7igNT-U3HVqI76tIZuqFbCBsR4SlEsBego2uiXcnW2EUzjeLONUYJk8y5hMMSQbf_bi_p3al48UqZJOgpVZYDOsdvDWO6oxQ41nhodJzAyB1UjGIBdUg-sU3er5FBpTNyzYXjxr-vZVulw')`,
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0d14] via-[#0a0d14]/90 to-[#0a0d14]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-[#d4af37]/10 via-transparent to-transparent" />
-      </div>
+      {/* Background Accent Glows */}
+      <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#f2ca50]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#25D366]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-4xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10 space-y-12">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-12 space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4af37]/50 bg-[#121824]/90 shadow-[0_0_20px_rgba(212,175,55,0.25)]">
-            <Flame className="w-4 h-4 text-[#f2ca50] animate-pulse" />
-            <span className="text-xs font-serif tracking-widest text-[#ffe088] uppercase">
-              काशी देव दीपावली 2026 • आधिकारिक आरक्षण
+        <div className="text-center max-w-3xl mx-auto space-y-3">
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#25D366]/50 bg-[#101624]/90 backdrop-blur-md">
+            <MessageCircle className="w-4 h-4 text-[#25D366]" />
+            <span className="text-xs font-serif tracking-widest text-[#25D366] uppercase font-bold">
+              आधिकारिक व्हाट्सएप बुकिंग • WhatsApp Booking Portal
             </span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f2ca50] to-[#ffd700] uppercase tracking-wide drop-shadow-md">
-            RESERVE YOUR EXPERIENCE
+          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f2ca50] to-[#ffd700]">
+            BOOK YOUR DEV DEEPAWALI EXPERIENCE
           </h2>
 
           <p className="font-sans text-sm sm:text-base text-[#d0c5af]">
-            Fill in your details and continue on WhatsApp to complete your booking.
+            Select your preferred ride, calculate your booking value with 50% advance, and continue directly to WhatsApp (+91 8840177339) for availability confirmation.
           </p>
-
-          <div className="inline-flex items-center gap-2 text-xs text-[#25D366] bg-[#121e1a] px-3.5 py-1.5 rounded-full border border-[#25D366]/30 font-medium">
-            <MessageCircle className="w-4 h-4 text-[#25D366]" />
-            <span>Direct WhatsApp Booking: {OFFICIAL_WHATSAPP_NUMBER}</span>
-          </div>
         </div>
 
-        {/* STEP 1: Main Reservation Form */}
-        {flowStep === 'form' && (
-          <div className="bg-[#101522]/95 border border-[#d4af37]/50 rounded-3xl p-6 sm:p-10 md:p-12 shadow-[0_15px_50px_rgba(0,0,0,0.85)] backdrop-blur-xl relative">
-            {/* Corner Diya Ornaments */}
-            <div className="absolute top-4 left-4 text-[#f2ca50]/40 text-xs font-serif select-none pointer-events-none">
-              🪔 ।। शुभम् भवतु ।।
-            </div>
-            <div className="absolute top-4 right-4 text-[#f2ca50]/40 text-xs font-serif select-none pointer-events-none">
-              ।। हर हर महादेव ।। 🪔
-            </div>
+        {/* Main Booking Container */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          {/* Form Column */}
+          <div className="lg:col-span-7 bg-[#0d121d] rounded-3xl p-6 sm:p-8 border border-[#d4af37]/40 shadow-2xl space-y-6">
+            <form onSubmit={handleBookingSubmit} className="space-y-5">
+              
+              {/* SELECT YOUR RIDE CARDS */}
+              <div className="space-y-2">
+                <label className="block text-xs font-serif font-bold uppercase tracking-wider text-[#ffe088]">
+                  SELECT YOUR RIDE <span className="text-[#ff4d4d]">*</span>
+                </label>
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                  {PACKAGE_TIERS.map((tier) => {
+                    const isSelected = tier.id === selectedTierId;
+                    return (
+                      <button
+                        key={tier.id}
+                        type="button"
+                        onClick={() => setSelectedTierId(tier.id)}
+                        className={`p-3.5 rounded-2xl text-left border transition-all flex flex-col justify-between ${
+                          isSelected
+                            ? 'bg-[#182338] border-2 border-[#f2ca50] shadow-[0_0_20px_rgba(212,175,55,0.3)]'
+                            : 'bg-[#080c14] border-[#222c3f] hover:border-[#d4af37]/50 text-[#a5b4cb]'
+                        }`}
+                      >
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-xs font-serif font-bold text-white">
+                              {tier.name}
+                            </span>
+                            {tier.id === 'luxury-cruise' && (
+                              <Star className="w-3 h-3 text-[#f2ca50] fill-[#f2ca50]" />
+                            )}
+                          </div>
+                          <div className="text-[10px] text-[#ffe088] font-serif mt-0.5">
+                            {tier.hindiTitle}
+                          </div>
+                        </div>
 
-            <form onSubmit={handleProceedToReview} className="space-y-6 mt-2">
-              {/* Form Grid */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                {/* 1. Full Name */}
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-[#ffe088] mb-2">
-                    Full Name <span className="text-red-400">*</span>
+                        <div className="mt-3 pt-2 border-t border-[#1e293b]">
+                          <span className="font-serif font-bold text-sm text-[#f2ca50]">
+                            ₹{tier.price.toLocaleString('en-IN')}
+                          </span>
+                        </div>
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* FULL NAME */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-serif font-semibold text-[#e5e2e1]">
+                  FULL NAME <span className="text-[#ff4d4d]">*</span>
+                </label>
+                <div className="relative">
+                  <User className="w-4 h-4 text-[#8e9cb4] absolute left-3.5 top-3.5" />
+                  <input
+                    type="text"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    placeholder="Enter your full name"
+                    className={`w-full pl-10 pr-4 py-3 rounded-xl bg-[#080c14] border ${
+                      errors.fullName ? 'border-[#ff4d4d]' : 'border-[#2d384e]'
+                    } text-sm text-white focus:border-[#f2ca50] outline-none transition-colors`}
+                  />
+                </div>
+                {errors.fullName && (
+                  <p className="text-[11px] text-[#ff4d4d]">{errors.fullName}</p>
+                )}
+              </div>
+
+              {/* WHATSAPP CONTACT NUMBER & AGE */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* WhatsApp Number */}
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-serif font-semibold text-[#e5e2e1]">
+                    WHATSAPP / CONTACT NUMBER <span className="text-[#ff4d4d]">*</span>
                   </label>
                   <div className="relative">
-                    <User className="w-4 h-4 text-[#99907c] absolute left-4 top-3.5" />
-                    <input
-                      type="text"
-                      value={fullName}
-                      onChange={(e) => {
-                        setFullName(e.target.value);
-                        if (errors.fullName) setErrors((prev) => ({ ...prev, fullName: '' }));
-                      }}
-                      placeholder="Enter your full name"
-                      className={`w-full pl-11 pr-4 py-3 text-sm rounded-xl bg-[#080b12] border ${
-                        errors.fullName ? 'border-red-500 ring-1 ring-red-500' : 'border-[#384358]'
-                      } text-white placeholder-[#717d96] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none transition-all`}
-                    />
-                  </div>
-                  {errors.fullName && (
-                    <p className="text-xs text-red-400 mt-1.5 flex items-center gap-1">
-                      <AlertCircle className="w-3.5 h-3.5" /> {errors.fullName}
-                    </p>
-                  )}
-                </div>
-
-                {/* 2. Contact WhatsApp Number */}
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-[#ffe088] mb-2">
-                    Contact Number <span className="text-red-400">*</span>
-                  </label>
-                  <div className="relative flex">
-                    <span className="inline-flex items-center px-3.5 py-3 rounded-l-xl bg-[#172033] border-y border-l border-[#384358] text-xs sm:text-sm font-semibold text-[#ffe088]">
-                      🇮🇳 +91
-                    </span>
+                    <Phone className="w-4 h-4 text-[#8e9cb4] absolute left-3.5 top-3.5" />
                     <input
                       type="tel"
-                      maxLength={10}
                       value={whatsappNumber}
-                      onChange={(e) => {
-                        const val = e.target.value.replace(/\D/g, '');
-                        setWhatsappNumber(val);
-                        if (errors.whatsappNumber) setErrors((prev) => ({ ...prev, whatsappNumber: '' }));
-                      }}
-                      placeholder="Enter your WhatsApp number"
-                      className={`flex-1 pl-3 pr-4 py-3 text-sm rounded-r-xl bg-[#080b12] border ${
-                        errors.whatsappNumber ? 'border-red-500 ring-1 ring-red-500' : 'border-[#384358]'
-                      } text-white placeholder-[#717d96] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none transition-all`}
+                      onChange={(e) => setWhatsappNumber(e.target.value)}
+                      placeholder="e.g. 9876543210"
+                      maxLength={14}
+                      className={`w-full pl-10 pr-4 py-3 rounded-xl bg-[#080c14] border ${
+                        errors.whatsappNumber ? 'border-[#ff4d4d]' : 'border-[#2d384e]'
+                      } text-sm text-white focus:border-[#f2ca50] outline-none transition-colors`}
                     />
                   </div>
                   {errors.whatsappNumber && (
-                    <p className="text-xs text-red-400 mt-1.5 flex items-center gap-1">
-                      <AlertCircle className="w-3.5 h-3.5" /> {errors.whatsappNumber}
-                    </p>
+                    <p className="text-[11px] text-[#ff4d4d]">{errors.whatsappNumber}</p>
                   )}
                 </div>
 
-                {/* 3. Age */}
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-[#ffe088] mb-2">
-                    Age <span className="text-red-400">*</span>
+                {/* Age */}
+                <div className="space-y-1.5">
+                  <label className="block text-xs font-serif font-semibold text-[#e5e2e1]">
+                    AGE <span className="text-[#ff4d4d]">*</span>
                   </label>
                   <input
                     type="number"
-                    min={1}
-                    max={120}
+                    min="1"
+                    max="120"
                     value={age}
-                    onChange={(e) => {
-                      setAge(e.target.value);
-                      if (errors.age) setErrors((prev) => ({ ...prev, age: '' }));
-                    }}
-                    placeholder="Enter your age"
-                    className={`w-full px-4 py-3 text-sm rounded-xl bg-[#080b12] border ${
-                      errors.age ? 'border-red-500 ring-1 ring-red-500' : 'border-[#384358]'
-                    } text-white placeholder-[#717d96] focus:border-[#d4af37] focus:ring-1 focus:ring-[#d4af37] outline-none transition-all`}
+                    onChange={(e) => setAge(e.target.value)}
+                    placeholder="Enter age (e.g. 35)"
+                    className={`w-full px-4 py-3 rounded-xl bg-[#080c14] border ${
+                      errors.age ? 'border-[#ff4d4d]' : 'border-[#2d384e]'
+                    } text-sm text-white focus:border-[#f2ca50] outline-none transition-colors`}
                   />
                   {errors.age && (
-                    <p className="text-xs text-red-400 mt-1.5 flex items-center gap-1">
-                      <AlertCircle className="w-3.5 h-3.5" /> {errors.age}
-                    </p>
-                  )}
-                </div>
-
-                {/* 4. Number of Persons (Quantity Selector) */}
-                <div>
-                  <label className="block text-xs font-semibold uppercase tracking-wider text-[#ffe088] mb-2">
-                    NUMBER OF PERSONS <span className="text-red-400">*</span>
-                  </label>
-                  <div className="flex items-center justify-between px-4 py-2 bg-[#080b12] border border-[#384358] rounded-xl">
-                    <span className="text-xs text-[#d0c5af] font-medium">
-                      Guests (₹15,000 / person)
-                    </span>
-                    <div className="flex items-center gap-3">
-                      <button
-                        type="button"
-                        onClick={() => setPersons((prev) => Math.max(1, prev - 1))}
-                        disabled={persons <= 1}
-                        className="w-8 h-8 rounded-lg bg-[#172033] border border-[#485672] text-[#ffe088] font-bold text-base flex items-center justify-center hover:bg-[#d4af37]/20 disabled:opacity-30 disabled:pointer-events-none transition-colors"
-                      >
-                        -
-                      </button>
-                      <span className="font-serif font-bold text-lg text-[#f2ca50] w-6 text-center">
-                        {persons}
-                      </span>
-                      <button
-                        type="button"
-                        onClick={() => setPersons((prev) => Math.min(25, prev + 1))}
-                        className="w-8 h-8 rounded-lg bg-[#172033] border border-[#485672] text-[#ffe088] font-bold text-base flex items-center justify-center hover:bg-[#d4af37]/20 transition-colors"
-                      >
-                        +
-                      </button>
-                    </div>
-                  </div>
-                  {errors.persons && (
-                    <p className="text-xs text-red-400 mt-1.5 flex items-center gap-1">
-                      <AlertCircle className="w-3.5 h-3.5" /> {errors.persons}
-                    </p>
+                    <p className="text-[11px] text-[#ff4d4d]">{errors.age}</p>
                   )}
                 </div>
               </div>
 
-              {/* 5. Booking Date (Automatic & Locked to Dev Deepawali Event) */}
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#ffe088] mb-2">
-                  BOOKING DATE
+              {/* NUMBER OF PERSONS WITH PLUS / MINUS CONTROLS */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-serif font-semibold text-[#e5e2e1]">
+                  NUMBER OF PERSONS <span className="text-[#ff4d4d]">*</span>
                 </label>
-                <div className="p-3.5 rounded-xl bg-[#080b12] border border-[#384358] flex items-center justify-between text-xs sm:text-sm">
-                  <div className="flex items-center gap-2.5 text-white">
-                    <Calendar className="w-4 h-4 text-[#f2ca50]" />
-                    <span className="font-serif font-semibold text-[#ffe088]">{OFFICIAL_EVENT_DATE}</span>
-                  </div>
-                  <span className="text-[11px] px-2.5 py-1 rounded-full bg-[#d4af37]/20 text-[#f2ca50] border border-[#d4af37]/40 font-medium">
-                    Official Event Date
+                <div className="flex items-center justify-between p-2 rounded-xl bg-[#080c14] border border-[#2d384e]">
+                  <span className="text-xs text-[#a5b4cb] pl-3">
+                    Select Total Guests:
                   </span>
+                  <div className="flex items-center gap-3">
+                    <button
+                      type="button"
+                      onClick={() => setPersons(Math.max(1, persons - 1))}
+                      className="w-9 h-9 rounded-lg bg-[#141b29] hover:bg-[#1f2a3f] border border-[#2d384e] text-white flex items-center justify-center font-bold transition-colors active:scale-95"
+                    >
+                      <Minus className="w-4 h-4" />
+                    </button>
+                    <span className="font-serif font-bold text-lg text-[#f2ca50] min-w-[28px] text-center">
+                      {persons}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setPersons(persons + 1)}
+                      className="w-9 h-9 rounded-lg bg-[#141b29] hover:bg-[#1f2a3f] border border-[#2d384e] text-white flex items-center justify-center font-bold transition-colors active:scale-95"
+                    >
+                      <Plus className="w-4 h-4" />
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              {/* 6. Special Request (Optional) */}
-              <div>
-                <label className="block text-xs font-semibold uppercase tracking-wider text-[#ffe088] mb-2">
-                  Special Request <span className="text-[#99907c] font-normal lowercase">(optional)</span>
+              {/* SPECIAL REQUEST */}
+              <div className="space-y-1.5">
+                <label className="block text-xs font-serif font-semibold text-[#e5e2e1]">
+                  SPECIAL REQUEST <span className="text-xs text-[#8e9cb4] font-normal">(Optional)</span>
                 </label>
                 <textarea
                   rows={2}
                   value={specialRequest}
                   onChange={(e) => setSpecialRequest(e.target.value)}
-                  placeholder="Any special request? (e.g. Family booking, Birthday, Special seating request, Elder assistance)"
-                  className="w-full px-4 py-3 text-sm rounded-xl bg-[#080b12] border border-[#384358] text-white placeholder-[#717d96] focus:border-[#d4af37] outline-none resize-none transition-all"
+                  placeholder="Any senior citizen seating preference, gotra dedication, or arrival assistance notes..."
+                  className="w-full px-4 py-2.5 rounded-xl bg-[#080c14] border border-[#2d384e] text-xs sm:text-sm text-white focus:border-[#f2ca50] outline-none transition-colors resize-none"
                 />
               </div>
 
-              {/* 7. Live Price Calculator Banner */}
-              <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-r from-[#141b2a] via-[#1a2236] to-[#141b2a] border-2 border-[#d4af37]/60 shadow-[0_0_30px_rgba(212,175,55,0.2)] flex flex-col sm:flex-row items-center justify-between gap-4">
-                <div className="text-center sm:text-left">
-                  <div className="text-xs uppercase tracking-widest text-[#ffe088] font-serif font-bold">
-                    {persons} {persons === 1 ? 'PERSON' : 'PERSONS'} × ₹15,000
-                  </div>
-                  <div className="text-xs text-[#a5b4cb] mt-0.5">
-                    Dev Deepawali 2026 Royal Ganges Cruise Experience
-                  </div>
-                </div>
-
-                <div className="text-center sm:text-right">
-                  <div className="text-[10px] uppercase tracking-widest text-[#d0c5af] font-semibold">
-                    ESTIMATED TOTAL
-                  </div>
-                  <div className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffe088] via-[#f2ca50] to-[#ffd700] drop-shadow-md">
-                    ₹{estimatedTotal.toLocaleString('en-IN')}
-                  </div>
-                </div>
-              </div>
-
-              {/* 8. Terms Checkbox */}
-              <div>
-                <label className="flex items-start gap-3 cursor-pointer select-none">
-                  <input
-                    type="checkbox"
-                    checked={agreedToTerms}
-                    onChange={(e) => {
-                      setAgreedToTerms(e.target.checked);
-                      if (errors.terms) setErrors((prev) => ({ ...prev, terms: '' }));
-                    }}
-                    className="w-4 h-4 mt-0.5 rounded border-[#485672] text-[#f2ca50] focus:ring-[#f2ca50] focus:ring-offset-0 bg-[#080b12] cursor-pointer"
-                  />
-                  <span className="text-xs text-[#d0c5af] leading-relaxed">
-                    I confirm that the information provided is correct and I agree to the booking terms and conditions.
-                  </span>
-                </label>
-                {errors.terms && (
-                  <p className="text-xs text-red-400 mt-1.5 flex items-center gap-1">
-                    <AlertCircle className="w-3.5 h-3.5" /> {errors.terms}
-                  </p>
-                )}
-              </div>
-
-              {/* 9. Continue to Review Button */}
+              {/* SUBMIT BUTTON */}
               <button
                 type="submit"
-                id="booking-form-submit-btn"
-                className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white font-serif font-bold text-base sm:text-lg tracking-wide shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_45px_rgba(37,211,102,0.6)] transform hover:-translate-y-0.5 active:translate-y-0 transition-all flex items-center justify-center gap-3 group"
+                id="submit-booking-whatsapp-btn"
+                className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white font-serif font-bold text-base sm:text-lg shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_45px_rgba(37,211,102,0.7)] transition-all flex items-center justify-center gap-2.5 active:scale-95 cursor-pointer"
               >
-                <MessageCircle className="w-6 h-6 text-white group-hover:scale-110 transition-transform" />
-                <span>REVIEW & CONTINUE ON WHATSAPP</span>
-                <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                <MessageCircle className="w-5 h-5 text-white flex-shrink-0" />
+                <span>CONTINUE ON WHATSAPP (+91 8840177339)</span>
+                <ArrowRight className="w-5 h-5 flex-shrink-0" />
               </button>
-
-              <div className="text-center text-[11px] text-[#8e9cb4] flex items-center justify-center gap-2">
-                <ShieldCheck className="w-4 h-4 text-[#f2ca50]" />
-                <span>No payment required now. Booking team confirms availability on WhatsApp.</span>
-              </div>
             </form>
           </div>
-        )}
 
-        {/* STEP 2: Review Booking Details Before Opening WhatsApp */}
-        {flowStep === 'review' && (
-          <div className="bg-[#101522]/95 border-2 border-[#d4af37] rounded-3xl p-6 sm:p-10 md:p-12 shadow-[0_20px_60px_rgba(0,0,0,0.9)] backdrop-blur-xl animate-in fade-in space-y-6">
-            <div className="text-center space-y-1">
-              <div className="w-12 h-12 rounded-full bg-[#f2ca50]/20 border border-[#f2ca50] flex items-center justify-center mx-auto text-[#f2ca50] mb-2">
-                <Sparkles className="w-6 h-6" />
-              </div>
-              <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#ffe088]">
-                Review Your Booking Details
-              </h3>
-              <p className="text-xs text-[#d0c5af]">
-                Please verify your details below. Clicking continue will open WhatsApp with your pre-filled reservation message.
-              </p>
-            </div>
-
-            {/* Summary Details Table */}
-            <div className="rounded-2xl bg-[#080b12] border border-[#384358] p-6 space-y-4 text-xs sm:text-sm">
-              <div className="flex justify-between items-center py-2 border-b border-[#252f44]">
-                <span className="text-[#99907c] uppercase tracking-wider">Full Name</span>
-                <span className="font-bold text-white text-base">{fullName}</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-[#252f44]">
-                <span className="text-[#99907c] uppercase tracking-wider">WhatsApp Number</span>
-                <span className="font-bold text-[#25D366]">+91 {whatsappNumber}</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-[#252f44]">
-                <span className="text-[#99907c] uppercase tracking-wider">Age</span>
-                <span className="font-bold text-white">{age} Years</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-[#252f44]">
-                <span className="text-[#99907c] uppercase tracking-wider">Number of Persons</span>
-                <span className="font-bold text-[#ffe088] text-base">{persons} Guest{persons > 1 ? 's' : ''}</span>
-              </div>
-              <div className="flex justify-between items-center py-2 border-b border-[#252f44]">
-                <span className="text-[#99907c] uppercase tracking-wider">Event Date</span>
-                <span className="font-bold text-white">{OFFICIAL_EVENT_DATE}</span>
-              </div>
-              {specialRequest.trim() && (
-                <div className="flex justify-between items-start py-2 border-b border-[#252f44]">
-                  <span className="text-[#99907c] uppercase tracking-wider">Special Request</span>
-                  <span className="font-medium text-[#d0c5af] max-w-[60%] text-right">{specialRequest}</span>
-                </div>
-              )}
-              <div className="flex justify-between items-center pt-2">
-                <span className="text-xs uppercase tracking-wider font-bold text-[#f2ca50]">ESTIMATED TOTAL</span>
-                <span className="font-serif text-2xl sm:text-3xl font-bold text-[#f2ca50]">
-                  ₹{estimatedTotal.toLocaleString('en-IN')}
+          {/* Dynamic Calculator & Booking Summary Column */}
+          <div className="lg:col-span-5 space-y-6">
+            
+            {/* Dynamic Calculation Card */}
+            <div className="rounded-3xl p-6 sm:p-7 bg-[#0d121d] border-2 border-[#d4af37]/60 shadow-2xl space-y-5">
+              <div className="flex items-center justify-between border-b border-[#222c3f] pb-4">
+                <span className="text-xs font-serif uppercase tracking-widest text-[#ffe088] font-bold">
+                  DYNAMIC BOOKING CALCULATOR
+                </span>
+                <span className="text-[10px] bg-[#141b29] px-2.5 py-1 rounded-full text-[#f2ca50] font-mono border border-[#d4af37]/30">
+                  Live Pricing
                 </span>
               </div>
+
+              {/* Breakdown */}
+              <div className="space-y-3 text-xs sm:text-sm">
+                <div className="flex justify-between items-center text-[#a5b4cb]">
+                  <span>Selected Ride:</span>
+                  <span className="font-serif font-bold text-white text-right">
+                    {selectedTier.name}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center text-[#a5b4cb]">
+                  <span>Price Per Person:</span>
+                  <span className="font-mono font-semibold text-white">
+                    ₹{formatCurrency(pricePerPerson)}
+                  </span>
+                </div>
+
+                <div className="flex justify-between items-center text-[#a5b4cb]">
+                  <span>Number of Persons:</span>
+                  <span className="font-mono font-semibold text-[#f2ca50]">
+                    {persons} {persons === 1 ? 'Guest' : 'Guests'}
+                  </span>
+                </div>
+
+                {/* Total Booking Value */}
+                <div className="flex justify-between items-center pt-3 border-t border-[#1e293b] text-base">
+                  <span className="font-serif font-bold text-white">
+                    Total Booking Value:
+                  </span>
+                  <span className="font-serif font-bold text-xl text-[#f2ca50]">
+                    ₹{formatCurrency(totalBookingValue)}
+                  </span>
+                </div>
+
+                {/* 50% Advance */}
+                <div className="p-3.5 rounded-xl bg-[#141e2e] border border-[#25D366]/40 space-y-1">
+                  <div className="flex justify-between items-center text-xs sm:text-sm font-bold text-[#25D366]">
+                    <span>50% Advance Required:</span>
+                    <span className="text-base sm:text-lg">
+                      ₹{formatCurrency(advanceRequired)}
+                    </span>
+                  </div>
+                  <div className="text-[11px] text-[#a5b4cb]">
+                    Pay 50% advance to hold seats; balance of ₹{formatCurrency(remainingBalance)} due on boarding day.
+                  </div>
+                </div>
+              </div>
+
+              {/* 5 Inclusions Checklist */}
+              <div className="pt-2 space-y-2 border-t border-[#222c3f]">
+                <div className="text-[11px] uppercase tracking-wider text-[#ffe088] font-semibold">
+                  Included with this booking:
+                </div>
+                <div className="grid grid-cols-1 gap-1.5 text-xs text-[#d0c5af]">
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>🏮 One Sky Lantern</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>🪔 Flower Diya for Ganga Ji</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>💧 1 Bottle Mineral Water</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>🎟️ Welcome Entry with Tilak</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <span>🏆 One Keepsake Memento</span>
+                  </div>
+                </div>
+              </div>
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-col sm:flex-row items-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={() => setFlowStep('form')}
-                className="w-full sm:w-auto px-6 py-3.5 rounded-xl bg-[#172033] border border-[#384358] text-xs sm:text-sm text-[#d0c5af] hover:text-white flex items-center justify-center gap-2"
-              >
-                <ArrowLeft className="w-4 h-4" /> Edit Details
-              </button>
+            {/* Payment & Confirmation Flow Transparency Box */}
+            <div className="p-5 rounded-2xl bg-[#080c14] border border-[#2d384e] space-y-3 text-xs text-[#a5b4cb]">
+              <div className="font-serif font-bold text-[#ffe088] flex items-center gap-1.5 text-xs">
+                <ShieldCheck className="w-4 h-4 text-[#f2ca50]" /> 4-Step Transparent Booking Flow:
+              </div>
 
-              <button
-                type="button"
-                id="confirm-and-open-whatsapp-btn"
-                onClick={handleOpenWhatsApp}
-                className="w-full flex-1 py-4 px-8 rounded-xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white font-serif font-bold text-base sm:text-lg tracking-wide shadow-[0_0_35px_rgba(37,211,102,0.5)] hover:shadow-[0_0_55px_rgba(37,211,102,0.7)] flex items-center justify-center gap-3 transform hover:scale-[1.02] active:scale-[0.98] transition-all"
-              >
-                <MessageCircle className="w-6 h-6 text-white" />
-                <span>CONTINUE ON WHATSAPP</span>
-              </button>
+              <div className="space-y-2 text-[11px]">
+                <div className="flex items-center gap-2 text-[#ffffff]">
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">1</span>
+                  <span><strong>Choose Package:</strong> Select vessel and guest count</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#ffffff]">
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">2</span>
+                  <span><strong>Continue on WhatsApp:</strong> Message sent to +91 8840177339</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#ffffff]">
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">3</span>
+                  <span><strong>Availability Check:</strong> Booking team confirms slot</span>
+                </div>
+                <div className="flex items-center gap-2 text-[#ffffff]">
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">4</span>
+                  <span><strong>50% Advance Payment:</strong> Official receipt & pass issued</span>
+                </div>
+              </div>
+
+              <div className="pt-2 border-t border-[#1e2535] text-[10px] text-[#d0c5af] leading-relaxed italic">
+                *Your booking is confirmed only after availability is confirmed by the booking team and the required 50% advance payment is received.
+              </div>
             </div>
 
-            <p className="text-center text-[11px] text-[#99907c]">
-              Official booking desk: {OFFICIAL_WHATSAPP_NUMBER}
-            </p>
           </div>
-        )}
-
-        {/* STEP 3: Post-Click Confirmation Screen */}
-        {flowStep === 'submitted' && (
-          <div className="bg-[#101522]/95 border border-[#25D366]/50 rounded-3xl p-8 sm:p-12 text-center shadow-[0_20px_60px_rgba(0,0,0,0.9)] backdrop-blur-xl animate-in fade-in space-y-6">
-            <div className="w-16 h-16 rounded-full bg-[#25D366]/20 border-2 border-[#25D366] flex items-center justify-center mx-auto text-[#25D366] shadow-[0_0_30px_rgba(37,211,102,0.4)]">
-              <CheckCircle className="w-10 h-10" />
-            </div>
-
-            <div className="space-y-2">
-              <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#f2ca50]">
-                YOUR BOOKING DETAILS ARE READY
-              </h3>
-              <p className="text-xs sm:text-sm text-[#d0c5af] max-w-lg mx-auto leading-relaxed">
-                Your booking information has been prepared for WhatsApp. Continue the conversation with our booking team to confirm your reservation.
-              </p>
-            </div>
-
-            {/* Official Booking Desk Badge */}
-            <div className="inline-flex flex-col items-center p-4 rounded-2xl bg-[#080b12] border border-[#384358] max-w-sm mx-auto w-full">
-              <span className="text-[10px] text-[#99907c] uppercase tracking-widest font-semibold">Official WhatsApp Desk</span>
-              <span className="font-mono text-xl sm:text-2xl font-bold text-[#25D366] mt-0.5">
-                {OFFICIAL_WHATSAPP_NUMBER}
-              </span>
-              <span className="text-[11px] text-[#d0c5af] mt-1">
-                Estimated Total: <strong>₹{estimatedTotal.toLocaleString('en-IN')}</strong> ({persons} Person{persons > 1 ? 's' : ''})
-              </span>
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <button
-                type="button"
-                onClick={handleOpenWhatsApp}
-                className="w-full sm:w-auto px-8 py-4 rounded-full bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] text-white font-serif font-bold text-base shadow-[0_0_30px_rgba(37,211,102,0.5)] hover:shadow-[0_0_50px_rgba(37,211,102,0.8)] flex items-center justify-center gap-2 transform hover:scale-105 transition-all"
-              >
-                <MessageCircle className="w-5 h-5 text-white" />
-                <span>OPEN WHATSAPP</span>
-              </button>
-
-              <button
-                type="button"
-                onClick={handleResetForm}
-                className="w-full sm:w-auto px-6 py-4 rounded-full bg-[#172033] border border-[#384358] text-xs text-[#d0c5af] hover:text-white flex items-center justify-center gap-2"
-              >
-                <RefreshCw className="w-4 h-4" />
-                <span>Submit Another Request</span>
-              </button>
-            </div>
-
-            <p className="text-[11px] text-[#8e9cb4] italic">
-              Note: Actual booking confirmation happens only after our booking team confirms seat availability on WhatsApp.
-            </p>
-          </div>
-        )}
+        </div>
       </div>
     </section>
   );

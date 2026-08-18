@@ -12,8 +12,8 @@ export const StickyMobileWhatsAppCTA: React.FC<StickyMobileWhatsAppCTAProps> = (
         onClick={onBookClick}
         className="w-full min-h-[48px] py-3.5 px-4 rounded-xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] text-white font-serif font-bold text-sm tracking-wide shadow-[0_0_20px_rgba(37,211,102,0.4)] flex items-center justify-center gap-2 active:scale-95 transition-transform"
       >
-        <MessageCircle className="w-5 h-5 text-white flex-shrink-0" />
-        <span>BOOK VIA WHATSAPP (₹15,000)</span>
+        <span className="text-base">🪔</span>
+        <span>BOOK VIA WHATSAPP</span>
       </button>
     </div>
   );

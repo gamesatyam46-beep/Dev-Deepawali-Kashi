@@ -11,7 +11,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenConcierge }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedCategory, setSelectedCategory] = useState<string>('All');
 
-  const categories = ['All', 'Cruise & Boarding', 'Rituals & Dev Deepawali', 'Food & Hospitality', 'Dress & Guidelines'];
+  const categories = ['All', 'Cruise & Boarding', 'Rituals & Dev Deepawali', 'Package Inclusions', 'Dress & Guidelines'];
 
   const filteredFaqs = FAQ_ITEMS.filter((item) => {
     const matchesCategory = selectedCategory === 'All' || item.category === selectedCategory;

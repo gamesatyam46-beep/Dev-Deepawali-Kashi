@@ -15,8 +15,12 @@ import { AiConciergeModal } from './components/AiConciergeModal';
 
 export default function App() {
   const [conciergeOpen, setConciergeOpen] = useState(false);
+  const [selectedTierId, setSelectedTierId] = useState<string>('double-decker-boat');
 
-  const scrollToBooking = () => {
+  const scrollToBooking = (tierId?: string) => {
+    if (tierId) {
+      setSelectedTierId(tierId);
+    }
     const el = document.getElementById('booking-form');
     el?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -27,10 +31,10 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#070a10] text-[#e5e2e1] flex flex-col font-sans selection:bg-[#d4af37] selection:text-[#1a1500] pb-16 sm:pb-0">
+    <div className="min-h-screen bg-[#070a10] text-[#e5e2e1] flex flex-col font-sans selection:bg-[#d4af37] selection:text-[#1a1500] pb-24 sm:pb-0">
       {/* Top Luxury Navigation */}
       <Navbar
-        onOpenBooking={scrollToBooking}
+        onOpenBooking={() => scrollToBooking()}
         onOpenConcierge={() => setConciergeOpen(true)}
       />
 
@@ -38,7 +42,7 @@ export default function App() {
       <main className="flex-grow">
         {/* 1. Hero with Countdown, Video/Image Ambience & WhatsApp Book Now */}
         <Hero
-          onOpenBooking={scrollToBooking}
+          onOpenBooking={() => scrollToBooking()}
           onExploreGhats={handleExploreGhats}
         />
 
@@ -46,16 +50,16 @@ export default function App() {
         <StorySection />
 
         {/* 3. Curated Moments (Aarti, Laser Show, Fireworks, Luxury Cruise) */}
-        <CuratedMoments onOpenBooking={scrollToBooking} />
+        <CuratedMoments onOpenBooking={() => scrollToBooking()} />
 
         {/* 4. The 84 Ghats Interactive Cruise Route */}
         <GhatsMapExplorer />
 
-        {/* 5. Royal Packages & The Premium Passage (₹15,000) */}
-        <PackagesSection onSelectPackage={() => scrollToBooking()} />
+        {/* 5. Royal Packages (3 Tiers: ₹4,999, ₹7,999, ₹14,999) */}
+        <PackagesSection onSelectPackage={(tierId) => scrollToBooking(tierId)} />
 
         {/* 6. Dedicated WhatsApp Booking Form Section (Reserve Your Experience) */}
-        <BookingFormSection />
+        <BookingFormSection initialTierId={selectedTierId} />
 
         {/* 7. Hour-by-Hour Itinerary for Nov 24, 2026 */}
         <ItineraryTimeline />
@@ -69,12 +73,12 @@ export default function App() {
 
       {/* Footer & Final WhatsApp Booking CTA */}
       <Footer
-        onOpenBooking={scrollToBooking}
+        onOpenBooking={() => scrollToBooking()}
         onOpenConcierge={() => setConciergeOpen(true)}
       />
 
       {/* Sticky Bottom Mobile WhatsApp CTA */}
-      <StickyMobileWhatsAppCTA onBookClick={scrollToBooking} />
+      <StickyMobileWhatsAppCTA onBookClick={() => scrollToBooking()} />
 
       {/* Acharya Vidyadhar AI Spiritual Concierge Modal */}
       <AiConciergeModal

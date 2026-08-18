@@ -2,86 +2,84 @@ import { PackageTier, GhatInfo, CuratedMoment, ItineraryStep, AddonOption, Galle
 
 export const PACKAGE_TIERS: PackageTier[] = [
   {
-    id: 'royal-maharaj-deck',
-    name: 'The Royal Maharaj Deck',
-    hindiTitle: 'महाराज रॉयल डेक',
-    subtitle: 'The ultimate panoramic open-air sanctuary overlooking the millions of ghat diyas and Dashashwamedh Maha Aarti.',
-    price: 15000,
-    originalPrice: 19500,
+    id: 'chhoti-motor-boat',
+    name: 'Chhoti Motor Boat',
+    hindiTitle: 'छोटी मोटर बोट',
+    subtitle: 'Traditional motorized wooden boat offering an authentic, close-to-water sacred Ganga sailing experience.',
+    price: 4999,
+    originalPrice: 6500,
     currency: '₹',
-    capacityLimit: 80,
-    deckLevel: 'Upper Open Sky Deck (360° View)',
-    badge: 'Most Popular',
-    popular: true,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRFONyntckzDTsFjCSCBlIcKLwTqXZ8rNyJdWO0rqXfYSGWtYL87LkFE-9ypN_x7wf3Ip6MlsuWXgjD3CbxRZxK7T-jlOXogmfPpsOCnOupF5JPN8DwLtjPiKrq8iKsNdIgyLoFaxuZxVkQQAdcB5gIvGhF6VajiP9DOJ0H5tplGvC8a6yDihX47pWVBAuWG4PFDt4kngx1bPYceM4MvBks6iueF7ql9xwK2KnXHKjWLhLXKHIa0jc4w',
-    inclusions: [
-      'Priority VIP boarding with Chandan Tilak & Rudraksha Mala at Ravidas Ghat',
-      'Unobstructed front-row stationary mooring at Dashashwamedh Maha Aarti',
-      'Grand 5-Course Royal Banarasi & Awadhi Sattvic Dinner buffet',
-      'Exclusive 360° upper-deck open sky seating with soft ambient bolsters',
-      'Live guided storytelling by Vedic Scholars and Banaras Historians',
-      '108 Sacred Earthen Diyas provided for floating ritual onto the Ganges',
-      'Live classical Shehnai & Sitar maestro performance on deck',
-      'Complimentary welcome drinks: Saffron Kesar Thandai, Kashmiri Kahwa, & Fresh Juices'
-    ],
-    exclusivePerks: [
-      'Personalized brass diya souvenir blessed at Kashi Vishwanath sanctum',
-      'High-resolution digital photography package included',
-      'Air-conditioned VIP lounge access on lower deck during transit'
-    ]
-  },
-  {
-    id: 'imperial-maharaja-suite',
-    name: 'The Imperial Maharaja Suite',
-    hindiTitle: 'शाही महाराजा सुइट',
-    subtitle: 'Ultra-exclusive private stateroom with dedicated butler, private terrace, and personal Vedic Sankalp ritual.',
-    price: 28000,
-    originalPrice: 35000,
-    currency: '₹',
-    capacityLimit: 20,
-    deckLevel: 'Private Royal Cabin + Exclusive Bow Terrace',
-    badge: 'Ultra Luxury (Only 20 Guests)',
-    popular: false,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFb3qMwVJzY8306sfLipjtY6KMv85W9OkszJ7lkRWqi2Tpx6RezTJ-wyuOvXTuMJxRoWpINLI9MBpzd_q1zsuQo_G7Hnq4CAGiLdmYov8uy4h3BNwPEs9RWOeP7bfno9Om7qqij3O44kCKmTSBxMrylIJtDu6nBox5s8lMfdq8HW072sfkGYpr_q6CtPg9GzSnNg1_HcNELjpR8OZOn29VxVKG_2V_ZtZtnzl0NSCj-aaE-YCDQMkPsg',
-    inclusions: [
-      'Private Luxury Chauffeur Pick-up & Drop from any Varanasi hotel / airport',
-      'Private air-conditioned suite with royal antique wood interiors & viewing port',
-      'Dedicated personal Butler & Vedic Acharya for private family Sankalp',
-      'Table-served 7-course Imperial Banarasi royal degustation feast',
-      'Front bow private terrace access with premium binoculars & heated cushions',
-      'Exclusive Gangajal Kalash & pure Zari Banarasi Silk Angavastram gift box',
-      'All perks of the Royal Maharaj Deck with 0 waiting line'
-    ],
-    exclusivePerks: [
-      'Chauffeur Mercedes / BMW transfer included',
-      'Dedicated private Vedic pandit on board for personal blessings',
-      'Live private sitar recital in the stateroom'
-    ]
-  },
-  {
-    id: 'twilight-heritage-pass',
-    name: 'The Twilight Heritage Pass',
-    hindiTitle: 'हेरिटेज संध्या पास',
-    subtitle: 'Panoramic climate-controlled glass salon with artisanal Banarasi high tea, dinner buffet, and live commentary.',
-    price: 9500,
-    originalPrice: 12500,
-    currency: '₹',
-    capacityLimit: 100,
-    deckLevel: 'Lower Climate-Controlled Glass Salon',
-    badge: 'Heritage Classic',
+    capacityLimit: 30,
+    deckLevel: 'Single Deck Traditional Motor Boat',
+    badge: 'Popular Budget',
     popular: false,
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDsDsdWm0kzPy5qNpqQ8d7fL-REfua1hvEqKmG5mu9hxb9Exg69DpsnwWch5AHpigaxPrGcQdrOOWQbUfHTQMavztEJKdwpPv91McAlGj1viz1PRdIqgVKHG1HsFRffNJUsPgoL-m75bLBwl740kdVMttPaxP9yivdQ8ZvOTuZW5nVnQqdAI9vtmOQT1EMyF1xVLaXMkhIbyo2Ze91UJ6VRBHwEy0kuh-yd3mrBSpnV0nF1MtwXGJGIxg',
     inclusions: [
-      'Priority boarding at Ravidas Ghat with welcome tilak',
-      'Expansive panoramic glass walls overlooking the illuminated riverbank',
-      'Full Sattvic Banarasi dinner buffet & dessert bar',
-      'Access to open viewing promenades for photography during Aarti',
-      '51 Sacred Earthen Diyas provided for the floating offering',
-      'Live audio narration in English & Hindi detailing each of the 84 ghats'
+      'Welcome Entry (शाही स्वागत)',
+      '1 Bottle Packaged Mineral Water per person (1 बोतल मिनरल वाटर)',
+      'Sacred Flower Diya for Ganga Arpan (पुष्प दीप गंगा अर्पण)',
+      'Glowing Sky Lantern to release (स्काई लैंटर्न / आकाश दीप)',
+      'Sacred Memento Souvenir at farewell (पावन स्मृति चिन्ह / मोमेंटो)',
+      'Complete crescent tour of all 84 illuminated Ghats & Maha Aarti view'
     ],
     exclusivePerks: [
-      'Banarasi Malaiyo & Banarasi Paan live counter',
-      'Sealed holy Gangajal container with Kashi Vishwanath prasad'
+      'Authentic close-to-water river experience',
+      'Front-facing view of illuminated ghats'
+    ]
+  },
+  {
+    id: 'double-decker-boat',
+    name: 'Double Decker Boat',
+    hindiTitle: 'डबल डेकर बोट',
+    subtitle: 'Spacious 2-tier river vessel with elevated upper deck offering panoramic views of the Maha Aarti & ghats.',
+    price: 7999,
+    originalPrice: 10500,
+    currency: '₹',
+    capacityLimit: 60,
+    deckLevel: 'Dual Tier (Upper Open Deck + Lower Seating)',
+    badge: 'Most Popular',
+    popular: true,
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFb3qMwVJzY8306sfLipjtY6KMv85W9OkszJ7lkRWqi2Tpx6RezTJ-wyuOvXTuMJxRoWpINLI9MBpzd_q1zsuQo_G7Hnq4CAGiLdmYov8uy4h3BNwPEs9RWOeP7bfno9Om7qqij3O44kCKmTSBxMrylIJtDu6nBox5s8lMfdq8HW072sfkGYpr_q6CtPg9GzSnNg1_HcNELjpR8OZOn29VxVKG_2V_ZtZtnzl0NSCj-aaE-YCDQMkPsg',
+    inclusions: [
+      'Welcome Entry (शाही स्वागत)',
+      '1 Bottle Packaged Mineral Water per person (1 बोतल मिनरल वाटर)',
+      'Sacred Flower Diya for Ganga Arpan (पुष्प दीप गंगा अर्पण)',
+      'Glowing Sky Lantern to release (स्काई लैंटर्न / आकाश दीप)',
+      'Sacred Memento Souvenir at farewell (पावन स्मृति चिन्ह / मोमेंटो)',
+      'Elevated Upper Deck view for unobstructed photography of 84 Ghats',
+      'Prime stationary mooring for Dashashwamedh 21-Priest Maha Aarti'
+    ],
+    exclusivePerks: [
+      'Elevated panoramic vantage point',
+      'Ample space for moving & photography'
+    ]
+  },
+  {
+    id: 'luxury-cruise',
+    name: 'Luxury Cruise',
+    hindiTitle: 'शाही लक्ज़री क्रूज़',
+    subtitle: 'The flagship luxury cruise vessel with expansive 360° open-sky observation deck and VIP front-row mooring.',
+    price: 14999,
+    originalPrice: 19999,
+    currency: '₹',
+    capacityLimit: 120,
+    deckLevel: '360° Open Sky Royal Observation Deck',
+    badge: 'Ultra Luxury Flagship',
+    popular: false,
+    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRFONyntckzDTsFjCSCBlIcKLwTqXZ8rNyJdWO0rqXfYSGWtYL87LkFE-9ypN_x7wf3Ip6MlsuWXgjD3CbxRZxK7T-jlOXogmfPpsOCnOupF5JPN8DwLtjPiKrq8iKsNdIgyLoFaxuZxVkQQAdcB5gIvGhF6VajiP9DOJ0H5tplGvC8a6yDihX47pWVBAuWG4PFDt4kngx1bPYceM4MvBks6iueF7ql9xwK2KnXHKjWLhLXKHIa0jc4w',
+    inclusions: [
+      'VIP Welcome Entry (शाही भव्य स्वागत)',
+      '1 Bottle Packaged Mineral Water per person (1 बोतल मिनरल वाटर)',
+      'Sacred Flower Diya for Ganga Arpan (पुष्प दीप गंगा अर्पण)',
+      'Glowing Sky Lantern to release (स्काई लैंटर्न / आकाश दीप)',
+      'Sacred Memento Souvenir at farewell (पावन स्मृति चिन्ह / मोमेंटो)',
+      '360° Open-Air Royal Observation Deck with luxury seating',
+      'VIP Front-Row Stationary Mooring directly at Dashashwamedh Aarti',
+      'Live narration & Vedic chanting on board'
+    ],
+    exclusivePerks: [
+      'VIP Boarding lane at Ravidas Ghat',
+      'Maximum stability & ultra-smooth sailing'
     ]
   }
 ];
@@ -178,8 +176,8 @@ export const CURATED_MOMENTS: CuratedMoment[] = [
     id: 'moment-aarti',
     title: 'Maha Ganga Aarti',
     hindiTitle: 'महा गंगा आरती',
-    shortDesc: 'Front-row VIP boat mooring to witness 21 Vedic priests chant sacred stotras with multi-tiered flaming brass lamps.',
-    fullDesc: 'As darkness envelops the ancient river, 21 priests adorned in saffron silk take their stations at Dashashwamedh Ghat. With synchronized rhythms, blowing conches, burning incense, and towering multi-tiered brass oil lamps, the sacred chant of Har Har Gange echoes across the waters. Our luxury cruise holds a pre-reserved, stationary front-row mooring position with unobstructed 360-degree viewing.',
+    shortDesc: 'Front-row boat mooring to witness 21 Vedic priests chant sacred stotras with multi-tiered flaming brass lamps.',
+    fullDesc: 'As darkness envelops the ancient river, 21 priests adorned in saffron silk take their stations at Dashashwamedh Ghat. With synchronized rhythms, blowing conches, burning incense, and towering multi-tiered brass oil lamps, the sacred chant of Har Har Gange echoes across the waters. Our vessels hold a pre-reserved stationary mooring position for prime viewing.',
     timeSlot: '7:00 PM - 7:45 PM',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFb3qMwVJzY8306sfLipjtY6KMv85W9OkszJ7lkRWqi2Tpx6RezTJ-wyuOvXTuMJxRoWpINLI9MBpzd_q1zsuQo_G7Hnq4CAGiLdmYov8uy4h3BNwPEs9RWOeP7bfno9Om7qqij3O44kCKmTSBxMrylIJtDu6nBox5s8lMfdq8HW072sfkGYpr_q6CtPg9GzSnNg1_HcNELjpR8OZOn29VxVKG_2V_ZtZtnzl0NSCj-aaE-YCDQMkPsg',
     iconName: 'Flame',
@@ -198,10 +196,10 @@ export const CURATED_MOMENTS: CuratedMoment[] = [
   },
   {
     id: 'moment-fireworks',
-    title: 'Sky of Lights & Drones',
-    hindiTitle: 'ड्रोन शो और आतिशबाजी',
-    shortDesc: 'A coordinated fleet of 1,000 aerial drones weaving holy symbols over the Ganges followed by an eco-friendly fireworks grand finale.',
-    fullDesc: 'Watch in awe as 1,000 luminous drones rise above the opposite sandy banks of the Ganges, morphing into radiant 3D formations of Nataraja, the Holy Trishul, the Sacred Om, and the divine Kashi Vishwanath spire, followed by a breathtaking golden firework cascade that mirrors perfectly on the dark river water.',
+    title: 'Sky Lanterns & Drones',
+    hindiTitle: 'स्काई लैंटर्न व आकाश दीप',
+    shortDesc: 'Release glowing sky lanterns into the celestial night sky alongside synchronized aerial drones and fireworks.',
+    fullDesc: 'Experience the magic of releasing your own glowing Sky Lantern (Akash Deep) over the holy river Ganges, joining thousands of floating lights in the sky and one million earthen lamps on the 84 stone ghats below.',
     timeSlot: '8:45 PM - 9:15 PM',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAOXanjjYIkW1jTMupyblNx7UE-X2aXHbi_UBctHM6I468sKCf1IrGyioNRkUQ6Iogg_rrWdvVpwcl-nWL4z6WsewtaXggPuYzlDFdlc2PS2IpW90hIo_0jYeSkDtlCiB9EONayOIMo8L2Q_1xY_sev-pgq4UUs4dUOaK0S9NCGrgZcN6rb5y6B7rsXNbN8YDsI8nEcRBtC2CeXntd6cVe2ZjKxQVMP7dE_lx6wSWVQykjQenOaA0WaaA',
     iconName: 'Zap',
@@ -209,80 +207,80 @@ export const CURATED_MOMENTS: CuratedMoment[] = [
   },
   {
     id: 'moment-cruise',
-    title: 'Royal Ganges Cruise & Banquet',
-    hindiTitle: 'शाही क्रूज़ और सात्विक दावत',
-    shortDesc: 'Sail in quiet luxury across the 7-kilometer crescent of all 84 ghats with live classical music and an authentic 5-course Banarasi feast.',
-    fullDesc: 'Leave the packed crowds behind and experience the spiritual grandeur from the serene open deck of our bespoke vessel. Soft sitar notes waft through the air as dedicated attendants serve warm Kashmiri saffron kahwa, Banarasi tamatar chaat, hand-pressed rotis, rich subz biryani, and fragrant winter Malaiyo dessert.',
-    timeSlot: '4:30 PM - 10:30 PM',
+    title: '84 Ghats Sailing & Flower Diya Arpan',
+    hindiTitle: '84 घाट नौका विहार व पुष्प दीप अर्पण',
+    shortDesc: 'Sail across the 7-kilometer crescent of all 84 ghats with traditional welcome, flower diya Ganga arpan, and sacred memento.',
+    fullDesc: 'Glide serenely across Mother Ganga as the entire ghat embankment glimmers with over one million diyas. Every guest is gifted a sacred flower diya for personal Ganga arpan, packaged mineral water, a glowing sky lantern, and a cherished memento to remember this sacred evening forever.',
+    timeSlot: '4:30 PM - 10:00 PM',
     image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRFONyntckzDTsFjCSCBlIcKLwTqXZ8rNyJdWO0rqXfYSGWtYL87LkFE-9ypN_x7wf3Ip6MlsuWXgjD3CbxRZxK7T-jlOXogmfPpsOCnOupF5JPN8DwLtjPiKrq8iKsNdIgyLoFaxuZxVkQQAdcB5gIvGhF6VajiP9DOJ0H5tplGvC8a6yDihX47pWVBAuWG4PFDt4kngx1bPYceM4MvBks6iueF7ql9xwK2KnXHKjWLhLXKHIa0jc4w',
     iconName: 'Ship',
-    badge: 'Bespoke Comfort'
+    badge: 'Divine Passage'
   }
 ];
 
 export const ITINERARY_STEPS: ItineraryStep[] = [
   {
     time: '04:30 PM',
-    title: 'Royal Welcome & Tilak Ceremony',
+    title: 'Welcome Entry & Tilak Ceremony',
     hindiTitle: 'शाही स्वागत व तिलक संस्कार',
     location: 'Ravidas Ghat VIP Jetty',
-    description: 'Private red-carpet boarding, auspicious Chandan-Kumkum tilak by Vedic priests, sacred Rudraksha garland welcome, and welcome drinks (Kesar Thandai / Badam Milk).',
+    description: 'Welcome entry with auspicious Chandan tilak, Rudraksha blessing, and 1 complimentary bottle of packaged mineral water per guest.',
     iconName: 'Crown',
-    tag: 'Boarding'
+    tag: 'Welcome Entry'
   },
   {
     time: '05:15 PM',
-    title: 'Sunset Departure & Diya Lighting',
-    hindiTitle: 'सूर्यास्त प्रस्थान व 108 दीपदान',
+    title: 'Sunset Departure & Flower Diya Arpan',
+    hindiTitle: 'सूर्यास्त प्रस्थान व पुष्प दीप अर्पण',
     location: 'Assi to Tulsi Ghat',
-    description: 'The cruise departs as the crimson sun sets over the ancient skyline. Guests are handed brass pooja thalis with 108 earthen diyas and marigold petals to light and float upon the sacred waters.',
+    description: 'Departure onto holy Ganga. Guests are provided fresh Flower Diyas with sacred wicks to light and offer (Arpan) onto the tranquil waters as sunset colors the sky.',
     iconName: 'Sun',
-    tag: 'Sacred Ritual'
+    tag: 'Flower Diya'
   },
   {
     time: '06:00 PM',
     title: 'The Golden Crescent: 84 Illuminated Ghats',
     hindiTitle: '84 घाटों का स्वर्णिम दर्शन',
     location: 'Sailing along the Sacred Crescent',
-    description: 'As twilight turns to darkness, over 1.2 million diyas illuminate the 84 ghats in unison. Live commentary by Banaras historians reveals the hidden legends of each stone palace and ghat.',
+    description: 'Witness over 1 million diyas light up all 84 ghats simultaneously. Sail past historic maratha palaces, submerged Shiva temples, and sacred bathing ghats.',
     iconName: 'Compass',
-    tag: 'Sightseeing'
+    tag: '84 Ghats Tour'
   },
   {
     time: '07:00 PM',
     title: 'Front-Row Dashashwamedh Maha Aarti',
     hindiTitle: 'दशाश्वमेध महा गंगा आरती',
     location: 'Dashashwamedh Ghat Sanctum',
-    description: 'Our vessel takes reserved front-row mooring. Experience the celestial resonance of 21 priests waving flaming brass towers with reverberating shankha naad and mantras.',
+    description: 'Stationary mooring facing the 21 Vedic priests performing the world-famous Maha Aarti with towering flaming brass deepams and conch resonance.',
     iconName: 'Flame',
-    tag: 'Highlight'
+    tag: 'Maha Aarti'
   },
   {
     time: '08:00 PM',
     title: '3D Laser & Drone Light Spectacle',
     hindiTitle: '3D लेज़र और ड्रोन प्रकाश उत्सव',
     location: 'Chet Singh Ghat & Namo Ghat',
-    description: 'Panoramic viewing of the multi-beam laser projection on Chet Singh Fort stone walls and the 1,000-drone aerial formation over the sacred river.',
+    description: 'Panoramic viewing of the multi-beam laser projection on Chet Singh Fort stone walls and the drone light formations over the river.',
     iconName: 'Sparkles',
-    tag: 'Show'
+    tag: 'Laser Show'
   },
   {
     time: '08:45 PM',
-    title: 'Royal Banarasi Sattvic Degustation Dinner',
-    hindiTitle: 'शाही सात्विक बनारसी रात्रिभोज',
-    location: 'Cruise Dining Deck',
-    description: 'Indulge in a 5-course gourmet vegetarian feast featuring royal recipes of the Maharaja of Benares, followed by authentic Banarasi Paan and winter Malaiyo.',
-    iconName: 'Utensils',
-    tag: 'Gourmet Feast'
+    title: 'Sky Lantern (Akash Deep) Release',
+    hindiTitle: 'स्काई लैंटर्न / आकाश दीप विसर्जन',
+    location: 'Open River Waters',
+    description: 'Guests release their glowing Sky Lanterns into the sacred night sky, creating a celestial galaxy of lights connecting earth and heaven.',
+    iconName: 'Zap',
+    tag: 'Sky Lantern'
   },
   {
-    time: '10:00 PM',
-    title: 'Farewell & Sacred Prasadam Memento',
-    hindiTitle: 'विदाई एवं प्रसाद भेंट',
+    time: '09:45 PM',
+    title: 'Farewell & Sacred Memento Handover',
+    hindiTitle: 'विदाई एवं पावन स्मृति चिन्ह (मोमेंटो) भेंट',
     location: 'Ravidas Ghat VIP Jetty',
-    description: 'Disembarkation with complimentary holy Gangajal kalash, Kashi Vishwanath blessed prasadam, and private luxury vehicle drop-off.',
+    description: 'Smooth disembarkation where each guest receives an auspicious blessed Memento (स्मृति चिन्ह) as a lifetime keepsake of Dev Deepawali 2026.',
     iconName: 'Gift',
-    tag: 'Disembark'
+    tag: 'Memento'
   }
 ];
 
@@ -394,9 +392,9 @@ export const FAQ_ITEMS: FaqItem[] = [
     answer: 'Yes! Every guest is provided with authentic hand-crafted earthen diyas, organic cotton wicks, pure cow ghee, and marigold flower offerings. Under the guidance of our onboard Vedic priest, you will take part in the collective deepdaan blessing.'
   },
   {
-    category: 'Food & Hospitality',
-    question: 'What is the culinary experience like onboard?',
-    answer: 'We serve an authentic 5-course Banarasi and Royal Awadhi sattvic banquet. All preparations are strictly vegetarian and prepared with pure ghee, without onion or garlic, adhering to the highest sanctified traditions. Live counters include Banarasi Chaat, warm Malaiyo, fresh Jalebi with Rabdi, Saffron Thandai, and Paan.'
+    category: 'Package Inclusions',
+    question: 'What items and experiences are included in the package?',
+    answer: 'Each pass includes 5 signature offerings: 1. Traditional Welcome Entry, 2. Packaged Mineral Water (1 bottle per guest), 3. Sacred Flower Diya for Ganga Arpan, 4. Glowing Sky Lantern (Akash Deep) for release, and 5. A consecrated blessed Memento (स्मृति चिन्ह) keepsake at farewell, along with the full 84-ghat river cruise and Dashashwamedh Maha Aarti viewing. (Note: Dinner is not included).'
   },
   {
     category: 'Dress & Guidelines',

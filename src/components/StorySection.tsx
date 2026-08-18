@@ -15,13 +15,19 @@ export const StorySection: React.FC = () => {
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4af37]/40 bg-[#101624]/80 backdrop-blur-md">
               <BookOpen className="w-4 h-4 text-[#f2ca50]" />
               <span className="text-xs font-serif tracking-widest text-[#ffe088] uppercase">
-                पौराणिक कथा • The Sacred Legend
+                अनुभूति परिचय • The Divine Awakening
               </span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#f2ca50] leading-tight">
-              The Night Kashi Comes Alive for the Gods
+            <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-[#f2ca50] leading-tight">
+              WHEN KASHI LIGHTS UP
             </h2>
+
+            <div className="p-4 rounded-xl bg-[#101624]/90 border border-[#d4af37]/40 border-l-4 border-l-[#f2ca50]">
+              <p className="font-serif text-base sm:text-lg text-[#ffe088] leading-relaxed">
+                देव दीपावली की रात काशी के घाट हजारों दीपों से जगमगा उठते हैं। गंगा के बीच से इस अद्भुत दृश्य को देखना इस पर्व को और भी खास बना देता है।
+              </p>
+            </div>
 
             <div className="space-y-4 text-sm sm:text-base text-[#d0c5af] leading-relaxed">
               <p>
@@ -30,10 +36,6 @@ export const StorySection: React.FC = () => {
 
               <p>
                 As twilight settles over the eternal city, all <strong>84 magnificent stone ghats</strong>—stretching over seven kilometers in an auspicious crescent—are illuminated simultaneously with more than <strong>one million hand-lit earthen diyas</strong>. The sacred steps transform into a shimmering golden staircase connecting heaven and earth.
-              </p>
-
-              <p>
-                From the historic <em>Akash Deep</em> lanterns suspended high on bamboo poles at Panchganga Ghat to the thunderous conch blasts of the 21-priest Maha Aarti at Dashashwamedh, Dev Deepawali is a sensory and spiritual spectacle found nowhere else on planet Earth.
               </p>
             </div>
 

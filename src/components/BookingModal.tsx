@@ -13,7 +13,7 @@ interface BookingModalProps {
 export const BookingModal: React.FC<BookingModalProps> = ({
   isOpen,
   onClose,
-  initialTierId = 'royal-maharaj-deck',
+  initialTierId = 'double-decker-boat',
 }) => {
   const [step, setStep] = useState<number>(1);
   const [selectedTierId, setSelectedTierId] = useState<string>(initialTierId);

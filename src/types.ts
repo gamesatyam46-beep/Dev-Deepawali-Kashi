@@ -110,5 +110,5 @@ export interface FaqItem {
   id?: string;
   question: string;
   answer: string;
-  category: 'Cruise & Boarding' | 'Rituals & Dev Deepawali' | 'Food & Hospitality' | 'Dress & Guidelines';
+  category: 'Cruise & Boarding' | 'Rituals & Dev Deepawali' | 'Package Inclusions' | 'Dress & Guidelines' | string;
 }

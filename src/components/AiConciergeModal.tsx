@@ -20,8 +20,8 @@ const INITIAL_MESSAGES: Message[] = [
 
 const SUGGESTED_QUERIES = [
   'What is the spiritual significance of Dev Deepawali?',
-  'What is the recommended dress code for the cruise?',
-  'What sattvic dishes are served in the royal dinner?',
+  'What are the 3 package options and inclusions?',
+  'What is the recommended dress code for the boat/cruise?',
   'How do we reach Ravidas Ghat through festive traffic?'
 ];
 
