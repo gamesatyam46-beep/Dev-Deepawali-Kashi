@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, ShieldCheck, User, Phone, Sparkles, ArrowRight, Minus, Plus, CheckCircle2, Star, Clock } from 'lucide-react';
+import { MessageCircle, ShieldCheck, User, Phone, Sparkles, ArrowRight, Minus, Plus, CheckCircle2, Star } from 'lucide-react';
 import { PACKAGE_TIERS } from '../data/kashiData';
 
 const OFFICIAL_WHATSAPP_NUMBER = '+91 8840177339';
@@ -111,13 +111,13 @@ Thank you.`;
   return (
     <section
       id="booking-form"
-      className="py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0d14] relative overflow-hidden border-t border-b border-[#d4af37]/30"
+      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0d14] relative overflow-hidden border-t border-b border-[#d4af37]/30"
     >
       {/* Background Accent Glows */}
       <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#f2ca50]/5 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#25D366]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative z-10 space-y-12">
+      <div className="max-w-5xl mx-auto relative z-10 space-y-10 sm:space-y-12">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-3">
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#25D366]/50 bg-[#101624]/90 backdrop-blur-md">
@@ -127,27 +127,27 @@ Thank you.`;
             </span>
           </div>
 
-          <h2 className="font-serif text-3xl sm:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f2ca50] to-[#ffd700]">
+          <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-[#ffffff] via-[#f2ca50] to-[#ffd700]">
             BOOK YOUR DEV DEEPAWALI EXPERIENCE
           </h2>
 
-          <p className="font-sans text-sm sm:text-base text-[#d0c5af]">
+          <p className="font-sans text-xs sm:text-base text-[#d0c5af] leading-relaxed">
             Select your preferred ride, calculate your booking value with 50% advance, and continue directly to WhatsApp (+91 8840177339) for availability confirmation.
           </p>
         </div>
 
-        {/* Main Booking Container */}
+        {/* Main Booking Container: Vertical stack on mobile/tablet (<1024px) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Form Column */}
-          <div className="lg:col-span-7 bg-[#0d121d] rounded-3xl p-6 sm:p-8 border border-[#d4af37]/40 shadow-2xl space-y-6">
+          <div className="lg:col-span-7 bg-[#0d121d] rounded-3xl p-5 sm:p-8 border border-[#d4af37]/40 shadow-2xl space-y-6">
             <form onSubmit={handleBookingSubmit} className="space-y-5">
               
-              {/* SELECT YOUR RIDE CARDS */}
+              {/* SELECT YOUR RIDE CARDS: Vertical stack on mobile (<768px) */}
               <div className="space-y-2">
                 <label className="block text-xs font-serif font-bold uppercase tracking-wider text-[#ffe088]">
                   SELECT YOUR RIDE <span className="text-[#ff4d4d]">*</span>
                 </label>
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
                   {PACKAGE_TIERS.map((tier) => {
                     const isSelected = tier.id === selectedTierId;
                     return (
@@ -155,7 +155,7 @@ Thank you.`;
                         key={tier.id}
                         type="button"
                         onClick={() => setSelectedTierId(tier.id)}
-                        className={`p-3.5 rounded-2xl text-left border transition-all flex flex-col justify-between ${
+                        className={`p-3.5 rounded-2xl text-left border transition-all flex flex-col justify-between cursor-pointer ${
                           isSelected
                             ? 'bg-[#182338] border-2 border-[#f2ca50] shadow-[0_0_20px_rgba(212,175,55,0.3)]'
                             : 'bg-[#080c14] border-[#222c3f] hover:border-[#d4af37]/50 text-[#a5b4cb]'
@@ -175,10 +175,13 @@ Thank you.`;
                           </div>
                         </div>
 
-                        <div className="mt-3 pt-2 border-t border-[#1e293b]">
+                        <div className="mt-3 pt-2 border-t border-[#1e293b] flex items-center justify-between">
                           <span className="font-serif font-bold text-sm text-[#f2ca50]">
                             ₹{tier.price.toLocaleString('en-IN')}
                           </span>
+                          {isSelected && (
+                            <span className="text-[10px] text-[#25D366] font-bold">Selected</span>
+                          )}
                         </div>
                       </button>
                     );
@@ -208,8 +211,8 @@ Thank you.`;
                 )}
               </div>
 
-              {/* WHATSAPP CONTACT NUMBER & AGE */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {/* WHATSAPP CONTACT NUMBER & AGE: Vertical stack on mobile (<768px) */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* WhatsApp Number */}
                 <div className="space-y-1.5">
                   <label className="block text-xs font-serif font-semibold text-[#e5e2e1]">
@@ -261,14 +264,14 @@ Thank you.`;
                   NUMBER OF PERSONS <span className="text-[#ff4d4d]">*</span>
                 </label>
                 <div className="flex items-center justify-between p-2 rounded-xl bg-[#080c14] border border-[#2d384e]">
-                  <span className="text-xs text-[#a5b4cb] pl-3">
+                  <span className="text-xs text-[#a5b4cb] pl-2 sm:pl-3">
                     Select Total Guests:
                   </span>
                   <div className="flex items-center gap-3">
                     <button
                       type="button"
                       onClick={() => setPersons(Math.max(1, persons - 1))}
-                      className="w-9 h-9 rounded-lg bg-[#141b29] hover:bg-[#1f2a3f] border border-[#2d384e] text-white flex items-center justify-center font-bold transition-colors active:scale-95"
+                      className="w-9 h-9 rounded-lg bg-[#141b29] hover:bg-[#1f2a3f] border border-[#2d384e] text-white flex items-center justify-center font-bold transition-colors active:scale-95 cursor-pointer"
                     >
                       <Minus className="w-4 h-4" />
                     </button>
@@ -278,7 +281,7 @@ Thank you.`;
                     <button
                       type="button"
                       onClick={() => setPersons(persons + 1)}
-                      className="w-9 h-9 rounded-lg bg-[#141b29] hover:bg-[#1f2a3f] border border-[#2d384e] text-white flex items-center justify-center font-bold transition-colors active:scale-95"
+                      className="w-9 h-9 rounded-lg bg-[#141b29] hover:bg-[#1f2a3f] border border-[#2d384e] text-white flex items-center justify-center font-bold transition-colors active:scale-95 cursor-pointer"
                     >
                       <Plus className="w-4 h-4" />
                     </button>
@@ -300,15 +303,15 @@ Thank you.`;
                 />
               </div>
 
-              {/* SUBMIT BUTTON */}
+              {/* SUBMIT BUTTON with clean text wrapping */}
               <button
                 type="submit"
                 id="submit-booking-whatsapp-btn"
-                className="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white font-serif font-bold text-base sm:text-lg shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_45px_rgba(37,211,102,0.7)] transition-all flex items-center justify-center gap-2.5 active:scale-95 cursor-pointer"
+                className="w-full py-4 px-4 sm:px-6 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white font-serif font-bold text-sm sm:text-base md:text-lg shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_45px_rgba(37,211,102,0.7)] transition-all flex items-center justify-center gap-2.5 active:scale-95 cursor-pointer leading-snug"
               >
-                <MessageCircle className="w-5 h-5 text-white flex-shrink-0" />
-                <span>CONTINUE ON WHATSAPP (+91 8840177339)</span>
-                <ArrowRight className="w-5 h-5 flex-shrink-0" />
+                <MessageCircle className="w-5 h-5 text-white shrink-0" />
+                <span className="text-center">CONTINUE ON WHATSAPP (+91 8840177339)</span>
+                <ArrowRight className="w-4 h-4 sm:w-5 sm:h-5 shrink-0 hidden sm:inline" />
               </button>
             </form>
           </div>
@@ -317,7 +320,7 @@ Thank you.`;
           <div className="lg:col-span-5 space-y-6">
             
             {/* Dynamic Calculation Card */}
-            <div className="rounded-3xl p-6 sm:p-7 bg-[#0d121d] border-2 border-[#d4af37]/60 shadow-2xl space-y-5">
+            <div className="rounded-3xl p-5 sm:p-7 bg-[#0d121d] border-2 border-[#d4af37]/60 shadow-2xl space-y-5">
               <div className="flex items-center justify-between border-b border-[#222c3f] pb-4">
                 <span className="text-xs font-serif uppercase tracking-widest text-[#ffe088] font-bold">
                   DYNAMIC BOOKING CALCULATOR
@@ -351,11 +354,11 @@ Thank you.`;
                 </div>
 
                 {/* Total Booking Value */}
-                <div className="flex justify-between items-center pt-3 border-t border-[#1e293b] text-base">
+                <div className="flex justify-between items-center pt-3 border-t border-[#1e293b] text-sm sm:text-base">
                   <span className="font-serif font-bold text-white">
                     Total Booking Value:
                   </span>
-                  <span className="font-serif font-bold text-xl text-[#f2ca50]">
+                  <span className="font-serif font-bold text-lg sm:text-xl text-[#f2ca50]">
                     ₹{formatCurrency(totalBookingValue)}
                   </span>
                 </div>
@@ -368,7 +371,7 @@ Thank you.`;
                       ₹{formatCurrency(advanceRequired)}
                     </span>
                   </div>
-                  <div className="text-[11px] text-[#a5b4cb]">
+                  <div className="text-[11px] text-[#a5b4cb] leading-relaxed">
                     Pay 50% advance to hold seats; balance of ₹{formatCurrency(remainingBalance)} due on boarding day.
                   </div>
                 </div>
@@ -381,23 +384,23 @@ Thank you.`;
                 </div>
                 <div className="grid grid-cols-1 gap-1.5 text-xs text-[#d0c5af]">
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                     <span>🏮 One Sky Lantern</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                     <span>🪔 Flower Diya for Ganga Ji</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                     <span>💧 1 Bottle Mineral Water</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                     <span>🎟️ Welcome Entry with Tilak</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366]" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
                     <span>🏆 One Keepsake Memento</span>
                   </div>
                 </div>
@@ -412,19 +415,19 @@ Thank you.`;
 
               <div className="space-y-2 text-[11px]">
                 <div className="flex items-center gap-2 text-[#ffffff]">
-                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">1</span>
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50] shrink-0">1</span>
                   <span><strong>Choose Package:</strong> Select vessel and guest count</span>
                 </div>
                 <div className="flex items-center gap-2 text-[#ffffff]">
-                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">2</span>
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50] shrink-0">2</span>
                   <span><strong>Continue on WhatsApp:</strong> Message sent to +91 8840177339</span>
                 </div>
                 <div className="flex items-center gap-2 text-[#ffffff]">
-                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">3</span>
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50] shrink-0">3</span>
                   <span><strong>Availability Check:</strong> Booking team confirms slot</span>
                 </div>
                 <div className="flex items-center gap-2 text-[#ffffff]">
-                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50]">4</span>
+                  <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50] shrink-0">4</span>
                   <span><strong>50% Advance Payment:</strong> Official receipt & pass issued</span>
                 </div>
               </div>

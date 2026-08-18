@@ -96,7 +96,7 @@ export const GHATS_DATA: GhatInfo[] = [
     diyaCountApprox: '1,25,000+ Diyas',
     aartiTime: '5:45 PM',
     highlights: ['Vedic Hawan & Chanting', 'Deepdaan by 500+ local students', 'Classical Raga Yaman on Sitar'],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFb3qMwVJzY8306sfLipjtY6KMv85W9OkszJ7lkRWqi2Tpx6RezTJ-wyuOvXTuMJxRoWpINLI9MBpzd_q1zsuQo_G7Hnq4CAGiLdmYov8uy4h3BNwPEs9RWOeP7bfno9Om7qqij3O44kCKmTSBxMrylIJtDu6nBox5s8lMfdq8HW072sfkGYpr_q6CtPg9GzSnNg1_HcNELjpR8OZOn29VxVKG_2V_ZtZtnzl0NSCj-aaE-YCDQMkPsg',
+    image: '/src/assets/images/assi_ghat_dev_deepawali_1787045955960.jpg',
     coordinatesOrder: 1
   },
   {
@@ -166,7 +166,7 @@ export const GHATS_DATA: GhatInfo[] = [
     diyaCountApprox: '2,00,000+ Diyas',
     aartiTime: '8:45 PM (Grand Sky Fireworks & Drones)',
     highlights: ['Massive glowing 75-ft Namaste metal sculptures', 'Synchronized 1000-drone aerial light formations', 'Grand eco-friendly aerial firework finale'],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAOXanjjYIkW1jTMupyblNx7UE-X2aXHbi_UBctHM6I468sKCf1IrGyioNRkUQ6Iogg_rrWdvVpwcl-nWL4z6WsewtaXggPuYzlDFdlc2PS2IpW90hIo_0jYeSkDtlCiB9EONayOIMo8L2Q_1xY_sev-pgq4UUs4dUOaK0S9NCGrgZcN6rb5y6B7rsXNbN8YDsI8nEcRBtC2CeXntd6cVe2ZjKxQVMP7dE_lx6wSWVQykjQenOaA0WaaA',
+    image: '/src/assets/images/namo_ghat_dev_deepawali_1787046139285.jpg',
     coordinatesOrder: 6
   }
 ];
@@ -321,6 +321,14 @@ export const ADDON_OPTIONS: AddonOption[] = [
 
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
+    id: 'gal-0',
+    title: 'Assi Ghat Illuminated at Night',
+    category: 'ghats',
+    image: '/src/assets/images/assi_ghat_dev_deepawali_1787045955960.jpg',
+    caption: 'Ancient stone steps of Assi Ghat illuminated with over 100,000 glowing golden diyas and evening rituals.',
+    location: 'Assi Ghat'
+  },
+  {
     id: 'gal-1',
     title: 'Maha Aarti at Dashashwamedh',
     category: 'aarti',
@@ -354,11 +362,11 @@ export const GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'gal-5',
-    title: 'Sky Spectacle & Fireworks',
+    title: 'Namo Ghat & Sky Fireworks Finale',
     category: 'laser',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAOXanjjYIkW1jTMupyblNx7UE-X2aXHbi_UBctHM6I468sKCf1IrGyioNRkUQ6Iogg_rrWdvVpwcl-nWL4z6WsewtaXggPuYzlDFdlc2PS2IpW90hIo_0jYeSkDtlCiB9EONayOIMo8L2Q_1xY_sev-pgq4UUs4dUOaK0S9NCGrgZcN6rb5y6B7rsXNbN8YDsI8nEcRBtC2CeXntd6cVe2ZjKxQVMP7dE_lx6wSWVQykjQenOaA0WaaA',
-    caption: 'Fireworks and drone constellations illuminating the night sky over the holy river.',
-    location: 'Namo Ghat & Sand Banks'
+    image: '/src/assets/images/namo_ghat_dev_deepawali_1787046139285.jpg',
+    caption: 'Iconic illuminated Namaste sculptures and drone constellations over the sacred river.',
+    location: 'Namo Ghat'
   },
   {
     id: 'gal-6',

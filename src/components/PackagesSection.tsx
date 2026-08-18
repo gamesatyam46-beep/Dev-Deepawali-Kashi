@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckCircle2, Sparkles, Star, Award, ShieldCheck, Check, Info, ArrowRight } from 'lucide-react';
+import { CheckCircle2, Sparkles, Star, Award, ShieldCheck, Check, ArrowRight } from 'lucide-react';
 import { PACKAGE_TIERS } from '../data/kashiData';
 
 interface PackagesSectionProps {
@@ -18,51 +18,51 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
       num: '01',
       icon: '🏮',
       title: 'SKY LANTERN',
-      subtitle: 'One Sky Lantern',
-      desc: 'A memorable part of the Dev Deepawali celebration to light and release into the celestial night sky.'
+      subtitle: 'One Sky Lantern (आकाश दीप)',
+      desc: 'A memorable part of the Dev Deepawali celebration to light and release into the celestial night sky over the holy Ganga.'
     },
     {
       num: '02',
       icon: '🪔',
       title: 'FLOWER DIYA',
-      subtitle: 'Flower Diya for Ganga Ji',
-      desc: 'To be respectfully immersed into the sacred Ganges as part of your devotional offering.'
+      subtitle: 'Flower Diya for Ganga Ji (पुष्प दीप)',
+      desc: 'To be respectfully immersed into the sacred Ganges as part of your devotional offering during the grand Aarti.'
     },
     {
       num: '03',
       icon: '💧',
       title: '1 BOTTLE WATER',
-      subtitle: 'One Bottle of Water',
-      desc: 'Complimentary sealed packaged mineral drinking water provided for every guest.'
+      subtitle: 'One Bottle of Water (मिनरल वाटर)',
+      desc: 'Complimentary sealed packaged mineral drinking water provided for every passenger on board.'
     },
     {
       num: '04',
       icon: '🎟️',
       title: 'WELCOME ENTRY',
-      subtitle: 'Welcome Entry',
-      desc: 'A warm traditional welcome with tilak and seamless entry as you embark on the experience.'
+      subtitle: 'Welcome Entry with Tilak (शाही स्वागत)',
+      desc: 'A warm traditional welcome with chandan tilak and seamless priority entry as you embark on your sacred passage.'
     },
     {
       num: '05',
       icon: '🏆',
       title: 'MOMENTO',
-      subtitle: 'One Memento',
-      desc: 'A sacred souvenir keepsake to remember your divine Dev Deepawali experience for a lifetime.'
+      subtitle: 'One Memento (पावन स्मृति चिन्ह)',
+      desc: 'A sacred souvenir keepsake to remember your divine Dev Deepawali experience in Varanasi for a lifetime.'
     }
   ];
 
   return (
-    <section id="packages" className="py-20 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#070a10] relative overflow-hidden border-t border-[#d4af37]/20">
+    <section id="packages" className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#070a10] relative overflow-hidden border-t border-[#d4af37]/20">
       {/* Subtle Background Glows */}
       <div className="absolute top-0 right-0 w-96 h-96 bg-[#f2ca50]/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-[#ff9933]/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/2 pointer-events-none" />
 
-      <div className="max-w-7xl mx-auto relative z-10 space-y-20 sm:space-y-24">
+      <div className="max-w-7xl mx-auto relative z-10 space-y-16 sm:space-y-24">
         
         {/* ========================================================= */}
-        {/* SECTION 5: YOUR EXPERIENCE INCLUDES (5 CONFIRMED ITEMS)   */}
+        {/* SECTION: YOUR EXPERIENCE INCLUDES (5 CONFIRMED ITEMS)     */}
         {/* ========================================================= */}
-        <div className="space-y-10">
+        <div className="space-y-8 sm:space-y-10">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4af37]/40 bg-[#101624]/80 backdrop-blur-md">
               <Star className="w-4 h-4 text-[#f2ca50] fill-[#f2ca50]" />
@@ -71,17 +71,17 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               </span>
             </div>
 
-            <h2 className="font-serif text-3xl sm:text-5xl font-bold text-[#f2ca50]">
+            <h2 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-[#f2ca50]">
               YOUR EXPERIENCE INCLUDES
             </h2>
 
-            <p className="font-sans text-sm sm:text-base text-[#d0c5af]">
+            <p className="font-sans text-xs sm:text-base text-[#d0c5af] leading-relaxed">
               Every booking comes standard with five sacred and memorable offerings to enrich your Dev Deepawali celebration on the Ganga.
             </p>
           </div>
 
-          {/* 5 Inclusions Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
+          {/* Inclusions: Consistent vertical stack on mobile (<768px), 5-col on desktop */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 sm:gap-6">
             {INCLUSIONS_LIST.map((inc) => (
               <div
                 key={inc.num}
@@ -89,13 +89,13 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-3xl sm:text-4xl">{inc.icon}</span>
-                    <span className="text-xs font-mono font-bold text-[#f2ca50]/70 bg-[#172033] px-2.5 py-1 rounded-full border border-[#d4af37]/20">
+                    <span className="text-3xl sm:text-4xl" role="img" aria-label={inc.title}>{inc.icon}</span>
+                    <span className="text-xs font-mono font-bold text-[#f2ca50]/80 bg-[#172033] px-2.5 py-1 rounded-full border border-[#d4af37]/20">
                       {inc.num}
                     </span>
                   </div>
 
-                  <div className="mt-4 space-y-1">
+                  <div className="mt-3.5 space-y-1">
                     <h3 className="font-serif font-bold text-base sm:text-lg text-[#ffffff] group-hover:text-[#ffe088] transition-colors">
                       {inc.title}
                     </h3>
@@ -110,22 +110,23 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                 </div>
 
                 <div className="pt-3 border-t border-[#1e293b] flex items-center gap-1.5 text-[11px] text-[#25D366] font-medium">
-                  <CheckCircle2 className="w-3.5 h-3.5" /> Included with all rides
+                  <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
+                  <span>Included with all rides</span>
                 </div>
               </div>
             ))}
           </div>
 
           {/* Transparent Notice Banner */}
-          <div className="max-w-3xl mx-auto text-center p-3.5 rounded-xl bg-[#101624]/70 border border-[#d4af37]/25 text-xs text-[#c2d0e6]">
+          <div className="max-w-3xl mx-auto text-center p-4 rounded-xl bg-[#101624]/90 border border-[#d4af37]/25 text-xs text-[#c2d0e6] leading-relaxed">
             <span className="text-[#ffe088] font-bold">Important Notice:</span> This is a sacred Dev Deepawali river viewing passage. No dinner, buffet, meals, or outside food packages are included.
           </div>
         </div>
 
         {/* ========================================================= */}
-        {/* SECTION 6: CHOOSE YOUR RIDE (3 DISTINCT PACKAGES)         */}
+        {/* SECTION: CHOOSE YOUR RIDE (3 DISTINCT PACKAGES)           */}
         {/* ========================================================= */}
-        <div className="space-y-12">
+        <div className="space-y-10 sm:space-y-12">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#d4af37]/40 bg-[#101624]/80 backdrop-blur-md">
               <Sparkles className="w-4 h-4 text-[#f2ca50]" />
@@ -138,13 +139,13 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               CHOOSE YOUR RIDE
             </h2>
 
-            <p className="font-serif text-base sm:text-xl text-[#ffe088] font-medium">
+            <p className="font-serif text-sm sm:text-xl text-[#ffe088] font-medium">
               Three ways to experience Dev Deepawali from the Ganga.
             </p>
           </div>
 
-          {/* 3 Package Cards with ample spacing and no overlapping badges */}
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-4">
+          {/* 3 Package Cards: Full width single column on mobile (<1024px), 3-col on desktop */}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8 items-stretch">
             {PACKAGE_TIERS.map((tier) => {
               const isLuxury = tier.id === 'luxury-cruise';
               const isDoubleDecker = tier.id === 'double-decker-boat';
@@ -152,7 +153,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               return (
                 <div
                   key={tier.id}
-                  className={`rounded-3xl p-6 sm:p-7 flex flex-col justify-between relative backdrop-blur-xl transition-all duration-300 ${
+                  className={`rounded-3xl p-5 sm:p-7 flex flex-col justify-between relative backdrop-blur-xl transition-all duration-300 ${
                     isLuxury
                       ? 'bg-gradient-to-b from-[#1c2233] via-[#121926] to-[#080b12] border-2 border-[#f2ca50] shadow-[0_0_40px_rgba(212,175,55,0.35)]'
                       : isDoubleDecker
@@ -178,26 +179,26 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                   </div>
 
                   <div>
-                    {/* Vessel Image */}
-                    <div className="relative h-48 rounded-2xl overflow-hidden mb-6 border border-[#2d384e]">
+                    {/* Vessel Image with responsive aspect ratio */}
+                    <div className="relative aspect-[16/10] sm:h-48 rounded-2xl overflow-hidden mb-5 border border-[#2d384e]">
                       <img
                         src={tier.image}
                         alt={tier.name}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#0d121d] via-[#0d121d]/30 to-transparent" />
-                      <div className="absolute bottom-2.5 left-3 right-3 flex items-center justify-between text-[11px] text-[#ffe088] font-serif bg-black/70 backdrop-blur-md px-3 py-1 rounded-lg border border-[#d4af37]/30">
+                      <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-[#ffe088] font-serif bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#d4af37]/30">
                         <span>{tier.deckLevel}</span>
                         <span>Nov 24 • Ravidas Ghat</span>
                       </div>
                     </div>
 
                     {/* Card Title & Pricing */}
-                    <div className="text-center pb-6 border-b border-[#222c3f] space-y-2">
+                    <div className="text-center pb-5 border-b border-[#222c3f] space-y-1.5">
                       <div className="text-xs font-serif text-[#ffe088] uppercase tracking-widest">
                         {tier.hindiTitle}
                       </div>
-                      <h3 className="font-serif text-2xl sm:text-3xl font-bold text-[#ffffff]">
+                      <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-[#ffffff]">
                         {tier.name.toUpperCase()}
                       </h3>
                       <p className="text-xs text-[#a5b4cb] leading-relaxed">
@@ -205,46 +206,46 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                       </p>
 
                       {/* Price Display */}
-                      <div className="pt-3">
+                      <div className="pt-2">
                         <div className="flex items-baseline justify-center gap-2">
-                          <span className="font-serif text-4xl sm:text-5xl font-bold text-[#f2ca50] drop-shadow-[0_2px_10px_rgba(242,202,80,0.3)]">
+                          <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f2ca50] drop-shadow-[0_2px_10px_rgba(242,202,80,0.3)]">
                             ₹{tier.price.toLocaleString('en-IN')}/-
                           </span>
                         </div>
-                        <div className="text-[11px] uppercase tracking-widest text-[#ffe088] font-semibold mt-1">
+                        <div className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#ffe088] font-semibold mt-1">
                           PER BOOKING / PER PERSON*
                         </div>
                       </div>
                     </div>
 
                     {/* Highlights List */}
-                    <div className="py-6 space-y-3">
+                    <div className="py-5 space-y-2.5">
                       <div className="text-xs font-semibold uppercase tracking-wider text-[#ffe088] flex items-center gap-1.5">
                         <Award className="w-3.5 h-3.5 text-[#f2ca50]" /> Ride Highlights:
                       </div>
 
-                      <ul className="space-y-2.5 text-xs sm:text-sm">
-                        <li className="flex items-start gap-2.5 text-[#e5e2e1]">
+                      <ul className="space-y-2 text-xs sm:text-sm">
+                        <li className="flex items-start gap-2 text-[#e5e2e1]">
                           <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
                           <span>Dev Deepawali river experience across 84 Ghats</span>
                         </li>
-                        <li className="flex items-start gap-2.5 text-[#e5e2e1]">
+                        <li className="flex items-start gap-2 text-[#e5e2e1]">
                           <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
                           <span>Welcome Entry (शाही स्वागत)</span>
                         </li>
-                        <li className="flex items-start gap-2.5 text-[#e5e2e1]">
+                        <li className="flex items-start gap-2 text-[#e5e2e1]">
                           <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
                           <span>Sky Lantern (आकाश दीप)</span>
                         </li>
-                        <li className="flex items-start gap-2.5 text-[#e5e2e1]">
+                        <li className="flex items-start gap-2 text-[#e5e2e1]">
                           <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
                           <span>Flower Diya for Ganga Ji (पुष्प दीप गंगा अर्पण)</span>
                         </li>
-                        <li className="flex items-start gap-2.5 text-[#e5e2e1]">
+                        <li className="flex items-start gap-2 text-[#e5e2e1]">
                           <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
                           <span>1 Bottle Water (मिनरल वाटर)</span>
                         </li>
-                        <li className="flex items-start gap-2.5 text-[#e5e2e1]">
+                        <li className="flex items-start gap-2 text-[#e5e2e1]">
                           <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
                           <span>Sacred Memento (पावन स्मृति चिन्ह)</span>
                         </li>
@@ -253,11 +254,11 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                   </div>
 
                   {/* Card Bottom CTA */}
-                  <div className="pt-4 border-t border-[#222c3f] space-y-2.5 text-center">
+                  <div className="pt-4 border-t border-[#222c3f] space-y-2 text-center">
                     <button
                       id={`book-tier-${tier.id}`}
                       onClick={() => scrollToBooking(tier.id)}
-                      className={`w-full py-4 px-6 rounded-2xl font-serif font-bold text-sm sm:text-base tracking-wide transition-all shadow-lg transform hover:scale-105 active:scale-95 flex items-center justify-center gap-2 cursor-pointer ${
+                      className={`w-full py-3.5 sm:py-4 px-5 rounded-2xl font-serif font-bold text-sm sm:text-base tracking-wide transition-all shadow-lg transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer ${
                         isLuxury
                           ? 'bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white shadow-[0_0_30px_rgba(37,211,102,0.5)]'
                           : 'bg-[#172033] hover:bg-[#25D366] text-[#ffe088] hover:text-white border border-[#d4af37]/40 hover:border-transparent'
@@ -278,9 +279,9 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
         </div>
 
         {/* ========================================================= */}
-        {/* SECTION 7: PACKAGE COMPARISON MATRIX                      */}
+        {/* SECTION: PACKAGE COMPARISON MATRIX                        */}
         {/* ========================================================= */}
-        <div className="space-y-8 pt-4">
+        <div className="space-y-6 sm:space-y-8 pt-2">
           <div className="text-center max-w-3xl mx-auto space-y-2">
             <h3 className="font-serif text-2xl sm:text-4xl font-bold text-[#f2ca50]">
               Package Comparison
@@ -291,57 +292,57 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
           </div>
 
           <div className="overflow-x-auto rounded-2xl border border-[#d4af37]/30 bg-[#0d121d] shadow-2xl">
-            <table className="w-full text-left border-collapse text-xs sm:text-sm">
+            <table className="w-full text-left border-collapse text-xs sm:text-sm min-w-[580px]">
               <thead>
                 <tr className="border-b border-[#222c3f] bg-[#141b29] text-[#ffe088] font-serif">
-                  <th className="p-4 sm:p-5 font-bold uppercase tracking-wider">Feature</th>
-                  <th className="p-4 sm:p-5 font-bold uppercase tracking-wider text-center">Choti Motor Boat</th>
-                  <th className="p-4 sm:p-5 font-bold uppercase tracking-wider text-center">Double Decker Boat</th>
-                  <th className="p-4 sm:p-5 font-bold uppercase tracking-wider text-center text-[#f2ca50]">Luxury Cruise (Featured)</th>
+                  <th className="p-3.5 sm:p-5 font-bold uppercase tracking-wider">Feature</th>
+                  <th className="p-3.5 sm:p-5 font-bold uppercase tracking-wider text-center">Choti Motor Boat</th>
+                  <th className="p-3.5 sm:p-5 font-bold uppercase tracking-wider text-center">Double Decker Boat</th>
+                  <th className="p-3.5 sm:p-5 font-bold uppercase tracking-wider text-center text-[#f2ca50]">Luxury Cruise (Featured)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#1e2535] text-[#d0c5af]">
                 <tr className="hover:bg-[#121926] transition-colors">
-                  <td className="p-4 sm:p-5 font-medium text-[#ffffff]">Price</td>
-                  <td className="p-4 sm:p-5 text-center font-bold text-[#ffffff]">₹4,999/-</td>
-                  <td className="p-4 sm:p-5 text-center font-bold text-[#ffffff]">₹7,999/-</td>
-                  <td className="p-4 sm:p-5 text-center font-bold text-[#f2ca50] text-base">₹14,999/-</td>
+                  <td className="p-3.5 sm:p-5 font-medium text-[#ffffff]">Price</td>
+                  <td className="p-3.5 sm:p-5 text-center font-bold text-[#ffffff]">₹4,999/-</td>
+                  <td className="p-3.5 sm:p-5 text-center font-bold text-[#ffffff]">₹7,999/-</td>
+                  <td className="p-3.5 sm:p-5 text-center font-bold text-[#f2ca50] text-sm sm:text-base">₹14,999/-</td>
                 </tr>
                 <tr className="hover:bg-[#121926] transition-colors">
-                  <td className="p-4 sm:p-5 font-medium text-[#ffffff]">Dev Deepawali 84 Ghats Tour</td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 font-medium text-[#ffffff]">Dev Deepawali 84 Ghats Tour</td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
                 </tr>
                 <tr className="hover:bg-[#121926] transition-colors">
-                  <td className="p-4 sm:p-5 font-medium text-[#ffffff]">Sky Lantern</td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 font-medium text-[#ffffff]">Sky Lantern</td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
                 </tr>
                 <tr className="hover:bg-[#121926] transition-colors">
-                  <td className="p-4 sm:p-5 font-medium text-[#ffffff]">Flower Diya</td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 font-medium text-[#ffffff]">Flower Diya</td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
                 </tr>
                 <tr className="hover:bg-[#121926] transition-colors">
-                  <td className="p-4 sm:p-5 font-medium text-[#ffffff]">1 Bottle Water</td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 font-medium text-[#ffffff]">1 Bottle Water</td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
                 </tr>
                 <tr className="hover:bg-[#121926] transition-colors">
-                  <td className="p-4 sm:p-5 font-medium text-[#ffffff]">Welcome Entry</td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 font-medium text-[#ffffff]">Welcome Entry</td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
                 </tr>
                 <tr className="hover:bg-[#121926] transition-colors">
-                  <td className="p-4 sm:p-5 font-medium text-[#ffffff]">Memento</td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
-                  <td className="p-4 sm:p-5 text-center"><Check className="w-5 h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 font-medium text-[#ffffff]">Memento</td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
+                  <td className="p-3.5 sm:p-5 text-center"><Check className="w-4 h-4 sm:w-5 sm:h-5 text-[#25D366] mx-auto" /></td>
                 </tr>
               </tbody>
             </table>
@@ -349,30 +350,30 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
         </div>
 
         {/* ========================================================= */}
-        {/* SECTION 8: 50% ADVANCE BOOKING INFORMATION & EXAMPLES     */}
+        {/* SECTION: 50% ADVANCE BOOKING INFORMATION & EXAMPLES       */}
         {/* ========================================================= */}
-        <div className="rounded-3xl p-6 sm:p-10 bg-gradient-to-r from-[#141b29] via-[#101624] to-[#141b29] border-2 border-[#d4af37]/60 shadow-[0_0_40px_rgba(212,175,55,0.25)] space-y-8">
+        <div className="rounded-3xl p-5 sm:p-10 bg-gradient-to-r from-[#141b29] via-[#101624] to-[#141b29] border-2 border-[#d4af37]/60 shadow-[0_0_40px_rgba(212,175,55,0.25)] space-y-6 sm:space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
             <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-[#d4af37]/40 bg-[#070a10] text-[#f2ca50] text-xs font-serif uppercase tracking-widest font-bold">
               <ShieldCheck className="w-4 h-4 text-[#f2ca50]" /> RESERVE YOUR SEAT
             </div>
 
-            <h3 className="font-serif text-3xl sm:text-4xl md:text-5xl font-bold text-[#ffffff]">
+            <h3 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-[#ffffff]">
               50% ADVANCE PAYMENT REQUIRED
             </h3>
 
-            <p className="font-serif text-sm sm:text-base text-[#ffe088]">
+            <p className="font-serif text-xs sm:text-base text-[#ffe088]">
               Booking confirm करने के लिए कुल booking amount का 50% advance payment करना होगा।
             </p>
           </div>
 
-          {/* 3 Calculated Dynamic Examples */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {/* 3 Calculated Dynamic Examples: Stack vertically on mobile (<768px) */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             <div className="p-5 sm:p-6 rounded-2xl bg-[#080c14] border border-[#2d384e] space-y-3">
               <div className="text-xs uppercase font-serif tracking-wider text-[#a5b4cb]">
                 Ride 01
               </div>
-              <h4 className="font-serif font-bold text-lg text-[#ffffff]">
+              <h4 className="font-serif font-bold text-base sm:text-lg text-[#ffffff]">
                 CHOTI MOTOR BOAT
               </h4>
               <div className="space-y-1.5 text-xs text-[#d0c5af]">
@@ -395,7 +396,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               <div className="text-xs uppercase font-serif tracking-wider text-[#ffe088]">
                 Ride 02 (Popular)
               </div>
-              <h4 className="font-serif font-bold text-lg text-[#ffffff]">
+              <h4 className="font-serif font-bold text-base sm:text-lg text-[#ffffff]">
                 DOUBLE DECKER BOAT
               </h4>
               <div className="space-y-1.5 text-xs text-[#d0c5af]">
@@ -418,7 +419,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               <div className="text-xs uppercase font-serif tracking-wider text-[#f2ca50] font-bold">
                 Ride 03 (Featured)
               </div>
-              <h4 className="font-serif font-bold text-lg text-[#ffffff]">
+              <h4 className="font-serif font-bold text-base sm:text-lg text-[#ffffff]">
                 LUXURY CRUISE
               </h4>
               <div className="space-y-1.5 text-xs text-[#d0c5af]">
@@ -444,7 +445,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                 const el = document.getElementById('booking-form');
                 el?.scrollIntoView({ behavior: 'smooth' });
               }}
-              className="px-8 py-3.5 rounded-full bg-[#f2ca50] hover:bg-[#ffe088] text-[#1c1300] font-serif font-bold text-sm shadow-[0_0_20px_rgba(242,202,80,0.4)] transition-all cursor-pointer"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#f2ca50] hover:bg-[#ffe088] text-[#1c1300] font-serif font-bold text-xs sm:text-sm shadow-[0_0_20px_rgba(242,202,80,0.4)] transition-all cursor-pointer"
             >
               CALCULATE & RESERVE YOUR SEATS
             </button>
