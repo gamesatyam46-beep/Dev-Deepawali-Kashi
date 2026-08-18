@@ -19,6 +19,27 @@
   .text-glow {
     text-shadow: 0 0 24px rgba(212, 175, 55, 0.5);
   }
+
+  .photo-hd {
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    filter: brightness(1.14) contrast(1.12) saturate(1.18);
+  }
+}
+
+/* Global Crisp Image Sharpness & Enhanced Brightness */
+img {
+  image-rendering: -webkit-optimize-contrast;
+  image-rendering: crisp-edges;
+  filter: brightness(1.12) contrast(1.12) saturate(1.15);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  transition: filter 0.35s ease, transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+img:hover {
+  filter: brightness(1.18) contrast(1.15) saturate(1.2);
 }
 
 body {

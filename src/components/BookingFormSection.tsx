@@ -34,8 +34,6 @@ export const BookingFormSection: React.FC<BookingFormSectionProps> = ({
   const selectedTier = PACKAGE_TIERS.find((t) => t.id === selectedTierId) || PACKAGE_TIERS[1];
   const pricePerPerson = selectedTier.price;
   const totalBookingValue = persons * pricePerPerson;
-  const advanceRequired = totalBookingValue * 0.5;
-  const remainingBalance = totalBookingValue - advanceRequired;
 
   // Validation
   const validateForm = (): boolean => {
@@ -88,8 +86,6 @@ Price Per Person/Unit: ₹${formatCurrency(pricePerPerson)}
 
 Total Booking Value: ₹${formatCurrency(totalBookingValue)}
 
-50% Advance Required: ₹${formatCurrency(advanceRequired)}
-
 Special Request:
 ${specialRequest.trim() || 'None'}
 
@@ -132,7 +128,7 @@ Thank you.`;
           </h2>
 
           <p className="font-sans text-xs sm:text-base text-[#d0c5af] leading-relaxed">
-            Select your preferred ride, calculate your booking value with 50% advance, and continue directly to WhatsApp (+91 8840177339) for availability confirmation.
+            Select your preferred ride, calculate your booking value, and continue directly to WhatsApp (+91 8840177339) for instant confirmation.
           </p>
         </div>
 
@@ -363,16 +359,16 @@ Thank you.`;
                   </span>
                 </div>
 
-                {/* 50% Advance */}
+                {/* Instant Confirmation Notice */}
                 <div className="p-3.5 rounded-xl bg-[#141e2e] border border-[#25D366]/40 space-y-1">
                   <div className="flex justify-between items-center text-xs sm:text-sm font-bold text-[#25D366]">
-                    <span>50% Advance Required:</span>
+                    <span>Total Fare:</span>
                     <span className="text-base sm:text-lg">
-                      ₹{formatCurrency(advanceRequired)}
+                      ₹{formatCurrency(totalBookingValue)}
                     </span>
                   </div>
                   <div className="text-[11px] text-[#a5b4cb] leading-relaxed">
-                    Pay 50% advance to hold seats; balance of ₹{formatCurrency(remainingBalance)} due on boarding day.
+                    Click continue to send your booking query directly to our official WhatsApp desk.
                   </div>
                 </div>
               </div>
@@ -428,12 +424,12 @@ Thank you.`;
                 </div>
                 <div className="flex items-center gap-2 text-[#ffffff]">
                   <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50] shrink-0">4</span>
-                  <span><strong>50% Advance Payment:</strong> Official receipt & pass issued</span>
+                  <span><strong>Seat Confirmation:</strong> Official pass & boarding instructions issued</span>
                 </div>
               </div>
 
               <div className="pt-2 border-t border-[#1e2535] text-[10px] text-[#d0c5af] leading-relaxed italic">
-                *Your booking is confirmed only after availability is confirmed by the booking team and the required 50% advance payment is received.
+                *Your booking is confirmed directly with the official Kashi hospitality team on WhatsApp (+91 8840177339).
               </div>
             </div>
 

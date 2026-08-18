@@ -75,9 +75,9 @@ export const GhatsMapExplorer: React.FC = () => {
             <img
               src={selectedGhat.image}
               alt={selectedGhat.name}
-              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105 brightness-115 contrast-112 saturate-115"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#101624] via-transparent to-black/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#101624] via-transparent to-black/20" />
             
             <div className="absolute top-4 left-4">
               <span className="px-3 py-1 rounded-full text-xs font-semibold bg-black/70 border border-[#d4af37]/50 text-[#ffe088] backdrop-blur-md">

@@ -162,13 +162,13 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                   }`}
                 >
                   {/* Full Bleed Image Header (100% card width coverage) */}
-                  <div className="relative w-full h-64 sm:h-72 lg:h-80 overflow-hidden bg-black">
+                  <div className="relative w-full h-64 sm:h-72 lg:h-80 overflow-hidden bg-[#0a0e17]">
                     <img
                       src={tier.image}
                       alt={tier.name}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-105"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-115 contrast-110 saturate-115"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#080b12] via-black/25 to-black/50" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080b12] via-black/15 to-black/35" />
 
                     {/* Top Floating Badge */}
                     <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
@@ -277,7 +277,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                       </button>
 
                       <div className="text-[11px] text-[#a5b4cb] flex items-center justify-center gap-1">
-                        <ShieldCheck className="w-3.5 h-3.5 text-[#f2ca50]" /> 50% Advance to Reserve
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#f2ca50]" /> Verified Seat Reservation
                       </div>
                     </div>
                   </div>
@@ -356,99 +356,8 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               </tbody>
             </table>
           </div>
-        </div>
 
-        {/* ========================================================= */}
-        {/* SECTION: 50% ADVANCE BOOKING INFORMATION & EXAMPLES       */}
-        {/* ========================================================= */}
-        <div className="rounded-3xl p-5 sm:p-10 bg-gradient-to-r from-[#141b29] via-[#101624] to-[#141b29] border-2 border-[#d4af37]/60 shadow-[0_0_40px_rgba(212,175,55,0.25)] space-y-6 sm:space-y-8">
-          <div className="text-center max-w-3xl mx-auto space-y-3">
-            <div className="inline-flex items-center gap-2 px-4 py-1 rounded-full border border-[#d4af37]/40 bg-[#070a10] text-[#f2ca50] text-xs font-serif uppercase tracking-widest font-bold">
-              <ShieldCheck className="w-4 h-4 text-[#f2ca50]" /> RESERVE YOUR SEAT
-            </div>
-
-            <h3 className="font-serif text-2xl sm:text-4xl md:text-5xl font-bold text-[#ffffff]">
-              50% ADVANCE PAYMENT REQUIRED
-            </h3>
-
-            <p className="font-serif text-xs sm:text-base text-[#ffe088]">
-              Booking confirm करने के लिए कुल booking amount का 50% advance payment करना होगा।
-            </p>
-          </div>
-
-          {/* 3 Calculated Dynamic Examples: Stack vertically on mobile (<768px) */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#080c14] border border-[#2d384e] space-y-3">
-              <div className="text-xs uppercase font-serif tracking-wider text-[#a5b4cb]">
-                Ride 01
-              </div>
-              <h4 className="font-serif font-bold text-base sm:text-lg text-[#ffffff]">
-                CHOTI MOTOR BOAT
-              </h4>
-              <div className="space-y-1.5 text-xs text-[#d0c5af]">
-                <div className="flex justify-between">
-                  <span>Price:</span>
-                  <span className="font-bold text-[#ffffff]">₹4,999.00</span>
-                </div>
-                <div className="flex justify-between text-[#25D366] font-semibold border-t border-[#1e2535] pt-1.5">
-                  <span>50% Advance:</span>
-                  <span>₹2,499.50</span>
-                </div>
-                <div className="flex justify-between text-[#8e9cb4]">
-                  <span>Balance at Boarding:</span>
-                  <span>₹2,499.50</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#080c14] border border-[#d4af37]/40 space-y-3">
-              <div className="text-xs uppercase font-serif tracking-wider text-[#ffe088]">
-                Ride 02 (Popular)
-              </div>
-              <h4 className="font-serif font-bold text-base sm:text-lg text-[#ffffff]">
-                DOUBLE DECKER BOAT
-              </h4>
-              <div className="space-y-1.5 text-xs text-[#d0c5af]">
-                <div className="flex justify-between">
-                  <span>Price:</span>
-                  <span className="font-bold text-[#ffffff]">₹7,999.00</span>
-                </div>
-                <div className="flex justify-between text-[#25D366] font-semibold border-t border-[#1e2535] pt-1.5">
-                  <span>50% Advance:</span>
-                  <span>₹3,999.50</span>
-                </div>
-                <div className="flex justify-between text-[#8e9cb4]">
-                  <span>Balance at Boarding:</span>
-                  <span>₹3,999.50</span>
-                </div>
-              </div>
-            </div>
-
-            <div className="p-5 sm:p-6 rounded-2xl bg-[#080c14] border-2 border-[#f2ca50] space-y-3 shadow-[0_0_25px_rgba(212,175,55,0.2)]">
-              <div className="text-xs uppercase font-serif tracking-wider text-[#f2ca50] font-bold">
-                Ride 03 (Featured)
-              </div>
-              <h4 className="font-serif font-bold text-base sm:text-lg text-[#ffffff]">
-                LUXURY CRUISE
-              </h4>
-              <div className="space-y-1.5 text-xs text-[#d0c5af]">
-                <div className="flex justify-between">
-                  <span>Price:</span>
-                  <span className="font-bold text-[#ffffff]">₹14,999.00</span>
-                </div>
-                <div className="flex justify-between text-[#25D366] font-bold border-t border-[#1e2535] pt-1.5">
-                  <span>50% Advance:</span>
-                  <span>₹7,499.50</span>
-                </div>
-                <div className="flex justify-between text-[#8e9cb4]">
-                  <span>Balance at Boarding:</span>
-                  <span>₹7,499.50</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center pt-2">
+          <div className="text-center pt-4">
             <button
               onClick={() => {
                 const el = document.getElementById('booking-form');
@@ -456,7 +365,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               }}
               className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-[#f2ca50] hover:bg-[#ffe088] text-[#1c1300] font-serif font-bold text-xs sm:text-sm shadow-[0_0_20px_rgba(242,202,80,0.4)] transition-all cursor-pointer"
             >
-              CALCULATE & RESERVE YOUR SEATS
+              PROCEED TO BOOKING
             </button>
           </div>
         </div>

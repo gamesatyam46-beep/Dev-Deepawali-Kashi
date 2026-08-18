@@ -73,9 +73,9 @@ export const StorySection: React.FC = () => {
               <img
                 src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsDsdWm0kzPy5qNpqQ8d7fL-REfua1hvEqKmG5mu9hxb9Exg69DpsnwWch5AHpigaxPrGcQdrOOWQbUfHTQMavztEJKdwpPv91McAlGj1viz1PRdIqgVKHG1HsFRffNJUsPgoL-m75bLBwl740kdVMttPaxP9yivdQ8ZvOTuZW5nVnQqdAI9vtmOQT1EMyF1xVLaXMkhIbyo2Ze91UJ6VRBHwEy0kuh-yd3mrBSpnV0nF1MtwXGJGIxg"
                 alt="Close up of a glowing brass diya on Kashi Ghats during Dev Deepawali"
-                className="w-full h-72 sm:h-96 lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-700"
+                className="w-full h-72 sm:h-96 lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-700 brightness-115 contrast-112 saturate-115"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#0a0e17] via-transparent to-black/20" />
               
               {/* Bottom Quote Banner */}
               <div className="absolute bottom-0 left-0 right-0 p-4 sm:p-6 bg-gradient-to-t from-[#0a0e17] via-[#0a0e17]/95 to-transparent">

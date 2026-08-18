@@ -66,9 +66,9 @@ export const GallerySection: React.FC = () => {
               <img
                 src={item.image}
                 alt={item.title}
-                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-115 contrast-110 saturate-115"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-[#070a10] via-[#070a10]/50 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#070a10] via-[#070a10]/35 to-transparent opacity-85 group-hover:opacity-90 transition-opacity" />
 
               <div className="absolute top-4 right-4 w-8 h-8 rounded-full bg-black/60 border border-[#d4af37]/40 flex items-center justify-center text-[#ffe088] opacity-0 group-hover:opacity-100 transition-opacity">
                 <Maximize2 className="w-4 h-4" />

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, MessageCircle, Clock, Sparkles } from 'lucide-react';
+import heroImageHd from '../assets/images/varanasi_razor_sharp_1787065726018.jpg';
 
 interface HeroProps {
   onOpenBooking: () => void;
@@ -45,15 +46,17 @@ export const Hero: React.FC<HeroProps> = ({ onOpenBooking, onExploreGhats }) => 
 
   return (
     <section className="relative min-h-screen flex items-center justify-center pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden bg-[#06080d]">
-      {/* Crystal Clear Cinematic Night Ganga Visual Backdrop */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      {/* 100% Crystal-Clear Razor-Sharp Dev Deepawali Visual Backdrop (No Haze / No Blur) */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         <img
-          src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1VJT4D_OZdQWRxa6Z3PvO7ekxcnXuMTsT_ZFlbZKaW7B5F9NdIsDfYSJOZNQJx-nIfXsRP6_pZmeNSnPkd6qW12-t0ozwKbYH0yk1hDHM7igNT-U3HVqI76tIZuqFbCBsR4SlEsBego2uiXcnW2EUzjeLONUYJk8y5hMMSQbf_bi_p3al48UqZJOgpVZYDOsdvDWO6oxQ41nhodJzAyB1UjGIBdUg-sU3er5FBpTNyzYXjxr-vZVulw"
-          alt="Dev Deepawali Varanasi Ghats"
-          className="w-full h-full object-cover object-center opacity-90 brightness-110 contrast-105"
+          src={heroImageHd}
+          alt="Dev Deepawali Varanasi Ghats Celebrations - Crystal Clear Sharp Focus"
+          referrerPolicy="no-referrer"
+          className="w-full h-full object-cover object-center opacity-100 brightness-110 contrast-115 saturate-120"
+          style={{ imageRendering: '-webkit-optimize-contrast' }}
         />
-        {/* Subtle overlays for contrast without burying the photo */}
-        <div className="absolute inset-0 bg-gradient-to-t from-[#06080d] via-black/40 to-[#06080d]/80" />
+        {/* Soft edge blend only at top and bottom edges - keeping the central photograph completely clear & crisp */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#06080d]/60 via-transparent to-[#06080d]/80 pointer-events-none" />
       </div>
 
       {/* Responsive Center Stage with clean vertical rhythm and zero overlap */}

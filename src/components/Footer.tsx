@@ -14,14 +14,14 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenConcierge }
       {/* SECTION: FINAL CINEMATIC CTA                              */}
       {/* ========================================================= */}
       <div className="relative py-16 sm:py-24 px-4 sm:px-6 lg:px-8 text-center border-b border-[#1e2535] overflow-hidden bg-[#06080d]">
-        {/* Background Image */}
+        {/* Background Image - Enhanced Brightness & Sharpness */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <img
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuB1VJT4D_OZdQWRxa6Z3PvO7ekxcnXuMTsT_ZFlbZKaW7B5F9NdIsDfYSJOZNQJx-nIfXsRP6_pZmeNSnPkd6qW12-t0ozwKbYH0yk1hDHM7igNT-U3HVqI76tIZuqFbCBsR4SlEsBego2uiXcnW2EUzjeLONUYJk8y5hMMSQbf_bi_p3al48UqZJOgpVZYDOsdvDWO6oxQ41nhodJzAyB1UjGIBdUg-sU3er5FBpTNyzYXjxr-vZVulw"
             alt="Varanasi Dev Deepawali Ghats at Night"
-            className="w-full h-full object-cover opacity-25 brightness-110"
+            className="w-full h-full object-cover opacity-70 brightness-[1.25] contrast-[1.15] saturate-[1.2]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#070a10] via-[#070a10]/80 to-[#070a10]" />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#070a10] via-[#070a10]/50 to-[#070a10]/70" />
         </div>
 
         <div className="relative z-10 max-w-4xl mx-auto space-y-6">
@@ -56,9 +56,9 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenConcierge }
             </div>
           </div>
 
-          {/* 50% Advance Badge */}
+          {/* Verified Reservation Badge */}
           <div className="inline-flex items-center gap-2 px-5 py-1.5 rounded-full bg-[#182438] border border-[#25D366]/50 text-xs font-serif font-bold text-[#25D366]">
-            <ShieldCheck className="w-4 h-4" /> 50% ADVANCE TO RESERVE
+            <ShieldCheck className="w-4 h-4" /> OFFICIAL DIRECT RESERVATIONS
           </div>
 
           {/* Booking CTA Button */}
@@ -155,7 +155,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenConcierge }
             </li>
             <li>
               <a href="#packages" className="hover:text-[#f2ca50] transition-colors text-[#25D366]">
-                50% Advance Booking Info
+                Ride Comparison & Details
               </a>
             </li>
           </ul>

@@ -53,11 +53,11 @@ export const CuratedMoments: React.FC<CuratedMomentsProps> = ({ onOpenBooking })
               <img
                 src={moment.image}
                 alt={moment.title}
-                className="absolute inset-0 w-full h-full object-cover opacity-75 group-hover:opacity-95 group-hover:scale-105 transition-all duration-700 brightness-105"
+                className="absolute inset-0 w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 brightness-115 contrast-110 saturate-115"
               />
 
               {/* Dark Gradient Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#06080d] via-[#06080d]/50 to-black/30" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#06080d] via-[#06080d]/40 to-black/20" />
 
               {/* Top Badge */}
               <div className="relative top-0 left-0 right-0 p-4 flex items-center justify-between z-10">
