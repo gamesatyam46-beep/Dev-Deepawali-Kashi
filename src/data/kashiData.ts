@@ -1,4 +1,6 @@
 import { PackageTier, GhatInfo, CuratedMoment, ItineraryStep, AddonOption, GalleryItem, FaqItem } from '../types';
+import assiGhatImg from '../assets/images/assi_ghat_dev_deepawali_1787045955960.jpg';
+import namoGhatImg from '../assets/images/namo_ghat_dev_deepawali_1787046139285.jpg';
 
 export const PACKAGE_TIERS: PackageTier[] = [
   {
@@ -96,7 +98,7 @@ export const GHATS_DATA: GhatInfo[] = [
     diyaCountApprox: '1,25,000+ Diyas',
     aartiTime: '5:45 PM',
     highlights: ['Vedic Hawan & Chanting', 'Deepdaan by 500+ local students', 'Classical Raga Yaman on Sitar'],
-    image: '/src/assets/images/assi_ghat_dev_deepawali_1787045955960.jpg',
+    image: assiGhatImg,
     coordinatesOrder: 1
   },
   {
@@ -166,7 +168,7 @@ export const GHATS_DATA: GhatInfo[] = [
     diyaCountApprox: '2,00,000+ Diyas',
     aartiTime: '8:45 PM (Grand Sky Fireworks & Drones)',
     highlights: ['Massive glowing 75-ft Namaste metal sculptures', 'Synchronized 1000-drone aerial light formations', 'Grand eco-friendly aerial firework finale'],
-    image: '/src/assets/images/namo_ghat_dev_deepawali_1787046139285.jpg',
+    image: namoGhatImg,
     coordinatesOrder: 6
   }
 ];
@@ -324,7 +326,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'gal-0',
     title: 'Assi Ghat Illuminated at Night',
     category: 'ghats',
-    image: '/src/assets/images/assi_ghat_dev_deepawali_1787045955960.jpg',
+    image: assiGhatImg,
     caption: 'Ancient stone steps of Assi Ghat illuminated with over 100,000 glowing golden diyas and evening rituals.',
     location: 'Assi Ghat'
   },
@@ -364,7 +366,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     id: 'gal-5',
     title: 'Namo Ghat & Sky Fireworks Finale',
     category: 'laser',
-    image: '/src/assets/images/namo_ghat_dev_deepawali_1787046139285.jpg',
+    image: namoGhatImg,
     caption: 'Iconic illuminated Namaste sculptures and drone constellations over the sacred river.',
     location: 'Namo Ghat'
   },
