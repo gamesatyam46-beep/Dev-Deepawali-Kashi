@@ -153,7 +153,7 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
               return (
                 <div
                   key={tier.id}
-                  className={`rounded-3xl p-5 sm:p-7 flex flex-col justify-between relative backdrop-blur-xl transition-all duration-300 ${
+                  className={`rounded-3xl overflow-hidden flex flex-col justify-between relative backdrop-blur-xl transition-all duration-300 group ${
                     isLuxury
                       ? 'bg-gradient-to-b from-[#1c2233] via-[#121926] to-[#080b12] border-2 border-[#f2ca50] shadow-[0_0_40px_rgba(212,175,55,0.35)]'
                       : isDoubleDecker
@@ -161,115 +161,124 @@ export const PackagesSection: React.FC<PackagesSectionProps> = ({ onSelectPackag
                       : 'bg-gradient-to-b from-[#101522] via-[#0c101a] to-[#070910] border border-[#384358] hover:border-[#d4af37]/50 shadow-2xl'
                   }`}
                 >
-                  {/* Top Badge */}
-                  <div className="mb-4 flex justify-center">
-                    {isLuxury ? (
-                      <span className="px-4 py-1.5 rounded-full text-xs font-serif font-bold tracking-widest uppercase bg-gradient-to-r from-[#ffd700] via-[#f59e0b] to-[#d97706] text-[#1c1300] shadow-[0_0_20px_rgba(245,158,11,0.6)] flex items-center gap-1.5">
-                        <Star className="w-3.5 h-3.5 fill-[#1c1300]" /> PREMIUM EXPERIENCE
-                      </span>
-                    ) : isDoubleDecker ? (
-                      <span className="px-3.5 py-1 rounded-full text-[11px] font-serif font-bold tracking-wider uppercase bg-[#1e293b] text-[#ffe088] border border-[#d4af37]/60">
-                        POPULAR CHOICE
-                      </span>
-                    ) : (
-                      <span className="px-3.5 py-1 rounded-full text-[11px] font-serif font-bold tracking-wider uppercase bg-[#162033] text-[#a5b4cb] border border-[#384358]">
-                        AUTHENTIC RIDE
-                      </span>
-                    )}
-                  </div>
+                  {/* Full Bleed Image Header (100% card width coverage) */}
+                  <div className="relative w-full h-64 sm:h-72 lg:h-80 overflow-hidden bg-black">
+                    <img
+                      src={tier.image}
+                      alt={tier.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 brightness-105"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#080b12] via-black/25 to-black/50" />
 
-                  <div>
-                    {/* Vessel Image with responsive aspect ratio */}
-                    <div className="relative aspect-[16/10] sm:h-48 rounded-2xl overflow-hidden mb-5 border border-[#2d384e]">
-                      <img
-                        src={tier.image}
-                        alt={tier.name}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#0d121d] via-[#0d121d]/30 to-transparent" />
-                      <div className="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] text-[#ffe088] font-serif bg-black/75 backdrop-blur-md px-3 py-1.5 rounded-lg border border-[#d4af37]/30">
-                        <span>{tier.deckLevel}</span>
-                        <span>Nov 24 • Ravidas Ghat</span>
-                      </div>
+                    {/* Top Floating Badge */}
+                    <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                      {isLuxury ? (
+                        <span className="px-3.5 py-1.5 rounded-full text-xs font-serif font-bold tracking-widest uppercase bg-gradient-to-r from-[#ffd700] via-[#f59e0b] to-[#d97706] text-[#1c1300] shadow-[0_0_20px_rgba(245,158,11,0.6)] flex items-center gap-1.5">
+                          <Star className="w-3.5 h-3.5 fill-[#1c1300]" /> PREMIUM EXPERIENCE
+                        </span>
+                      ) : isDoubleDecker ? (
+                        <span className="px-3.5 py-1.5 rounded-full text-[11px] font-serif font-bold tracking-wider uppercase bg-[#080c14]/90 text-[#ffe088] border border-[#d4af37]/70 backdrop-blur-md">
+                          POPULAR CHOICE
+                        </span>
+                      ) : (
+                        <span className="px-3.5 py-1.5 rounded-full text-[11px] font-serif font-bold tracking-wider uppercase bg-[#080c14]/90 text-[#a5b4cb] border border-[#384358] backdrop-blur-md">
+                          AUTHENTIC RIDE
+                        </span>
+                      )}
+
+                      <span className="px-3 py-1 rounded-full text-[10px] font-mono font-semibold bg-black/75 border border-[#d4af37]/40 text-[#ffe088] backdrop-blur-md">
+                        Nov 24 • Kashi
+                      </span>
                     </div>
 
-                    {/* Card Title & Pricing */}
-                    <div className="text-center pb-5 border-b border-[#222c3f] space-y-1.5">
-                      <div className="text-xs font-serif text-[#ffe088] uppercase tracking-widest">
-                        {tier.hindiTitle}
-                      </div>
-                      <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-[#ffffff]">
-                        {tier.name.toUpperCase()}
-                      </h3>
-                      <p className="text-xs text-[#a5b4cb] leading-relaxed">
-                        {tier.subtitle}
-                      </p>
-
-                      {/* Price Display */}
-                      <div className="pt-2">
-                        <div className="flex items-baseline justify-center gap-2">
-                          <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f2ca50] drop-shadow-[0_2px_10px_rgba(242,202,80,0.3)]">
-                            ₹{tier.price.toLocaleString('en-IN')}/-
-                          </span>
-                        </div>
-                        <div className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#ffe088] font-semibold mt-1">
-                          PER BOOKING / PER PERSON*
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Highlights List */}
-                    <div className="py-5 space-y-2.5">
-                      <div className="text-xs font-semibold uppercase tracking-wider text-[#ffe088] flex items-center gap-1.5">
-                        <Award className="w-3.5 h-3.5 text-[#f2ca50]" /> Ride Highlights:
-                      </div>
-
-                      <ul className="space-y-2 text-xs sm:text-sm">
-                        <li className="flex items-start gap-2 text-[#e5e2e1]">
-                          <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                          <span>Dev Deepawali river experience across 84 Ghats</span>
-                        </li>
-                        <li className="flex items-start gap-2 text-[#e5e2e1]">
-                          <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                          <span>Welcome Entry (शाही स्वागत)</span>
-                        </li>
-                        <li className="flex items-start gap-2 text-[#e5e2e1]">
-                          <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                          <span>Sky Lantern (आकाश दीप)</span>
-                        </li>
-                        <li className="flex items-start gap-2 text-[#e5e2e1]">
-                          <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                          <span>Flower Diya for Ganga Ji (पुष्प दीप गंगा अर्पण)</span>
-                        </li>
-                        <li className="flex items-start gap-2 text-[#e5e2e1]">
-                          <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                          <span>1 Bottle Water (मिनरल वाटर)</span>
-                        </li>
-                        <li className="flex items-start gap-2 text-[#e5e2e1]">
-                          <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
-                          <span>Sacred Memento (पावन स्मृति चिन्ह)</span>
-                        </li>
-                      </ul>
+                    {/* Bottom Vessel Spec on Image */}
+                    <div className="absolute bottom-3 left-4 right-4 flex items-center justify-between text-xs text-[#ffe088] font-serif bg-black/80 backdrop-blur-md px-3.5 py-2 rounded-xl border border-[#d4af37]/35 z-10">
+                      <span className="font-semibold">{tier.deckLevel}</span>
+                      <span className="text-[11px] text-[#25D366] font-sans font-medium">Ravidas Ghat VIP Jetty</span>
                     </div>
                   </div>
 
-                  {/* Card Bottom CTA */}
-                  <div className="pt-4 border-t border-[#222c3f] space-y-2 text-center">
-                    <button
-                      id={`book-tier-${tier.id}`}
-                      onClick={() => scrollToBooking(tier.id)}
-                      className={`w-full py-3.5 sm:py-4 px-5 rounded-2xl font-serif font-bold text-sm sm:text-base tracking-wide transition-all shadow-lg transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer ${
-                        isLuxury
-                          ? 'bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white shadow-[0_0_30px_rgba(37,211,102,0.5)]'
-                          : 'bg-[#172033] hover:bg-[#25D366] text-[#ffe088] hover:text-white border border-[#d4af37]/40 hover:border-transparent'
-                      }`}
-                    >
-                      <span>BOOK THIS RIDE</span>
-                      <ArrowRight className="w-4 h-4" />
-                    </button>
+                  {/* Card Content Body */}
+                  <div className="p-6 sm:p-7 flex flex-col justify-between flex-1 space-y-6">
+                    <div>
+                      {/* Card Title & Pricing */}
+                      <div className="text-center pb-5 border-b border-[#222c3f] space-y-1.5">
+                        <div className="text-xs font-serif text-[#ffe088] uppercase tracking-widest">
+                          {tier.hindiTitle}
+                        </div>
+                        <h3 className="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-[#ffffff]">
+                          {tier.name.toUpperCase()}
+                        </h3>
+                        <p className="text-xs text-[#a5b4cb] leading-relaxed">
+                          {tier.subtitle}
+                        </p>
 
-                    <div className="text-[11px] text-[#a5b4cb] flex items-center justify-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-[#f2ca50]" /> 50% Advance to Reserve
+                        {/* Price Display */}
+                        <div className="pt-3">
+                          <div className="flex items-baseline justify-center gap-2">
+                            <span className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-[#f2ca50] drop-shadow-[0_2px_10px_rgba(242,202,80,0.3)]">
+                              ₹{tier.price.toLocaleString('en-IN')}/-
+                            </span>
+                          </div>
+                          <div className="text-[10px] sm:text-[11px] uppercase tracking-widest text-[#ffe088] font-semibold mt-1">
+                            PER BOOKING / PER PERSON*
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Highlights List */}
+                      <div className="py-5 space-y-2.5">
+                        <div className="text-xs font-semibold uppercase tracking-wider text-[#ffe088] flex items-center gap-1.5">
+                          <Award className="w-3.5 h-3.5 text-[#f2ca50]" /> Ride Highlights:
+                        </div>
+
+                        <ul className="space-y-2 text-xs sm:text-sm">
+                          <li className="flex items-start gap-2 text-[#e5e2e1]">
+                            <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                            <span>Dev Deepawali river experience across 84 Ghats</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-[#e5e2e1]">
+                            <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                            <span>Welcome Entry (शाही स्वागत)</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-[#e5e2e1]">
+                            <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                            <span>Sky Lantern (आकाश दीप)</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-[#e5e2e1]">
+                            <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                            <span>Flower Diya for Ganga Ji (पुष्प दीप गंगा अर्पण)</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-[#e5e2e1]">
+                            <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                            <span>1 Bottle Water (मिनरल वाटर)</span>
+                          </li>
+                          <li className="flex items-start gap-2 text-[#e5e2e1]">
+                            <CheckCircle2 className="w-4 h-4 text-[#25D366] shrink-0 mt-0.5" />
+                            <span>Sacred Memento (पावन स्मृति चिन्ह)</span>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
+                    {/* Card Bottom CTA */}
+                    <div className="pt-4 border-t border-[#222c3f] space-y-2 text-center">
+                      <button
+                        id={`book-tier-${tier.id}`}
+                        onClick={() => scrollToBooking(tier.id)}
+                        className={`w-full py-3.5 sm:py-4 px-5 rounded-2xl font-serif font-bold text-sm sm:text-base tracking-wide transition-all shadow-lg transform hover:scale-[1.02] active:scale-95 flex items-center justify-center gap-2 cursor-pointer ${
+                          isLuxury
+                            ? 'bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white shadow-[0_0_30px_rgba(37,211,102,0.5)]'
+                            : 'bg-[#172033] hover:bg-[#25D366] text-[#ffe088] hover:text-white border border-[#d4af37]/40 hover:border-transparent'
+                        }`}
+                      >
+                        <span>BOOK THIS RIDE</span>
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+
+                      <div className="text-[11px] text-[#a5b4cb] flex items-center justify-center gap-1">
+                        <ShieldCheck className="w-3.5 h-3.5 text-[#f2ca50]" /> 50% Advance to Reserve
+                      </div>
                     </div>
                   </div>
                 </div>

@@ -1,6 +1,9 @@
 import { PackageTier, GhatInfo, CuratedMoment, ItineraryStep, AddonOption, GalleryItem, FaqItem } from '../types';
 import assiGhatImg from '../assets/images/assi_ghat_dev_deepawali_1787045955960.jpg';
 import namoGhatImg from '../assets/images/namo_ghat_dev_deepawali_1787046139285.jpg';
+import chhotiBoatImg from '../assets/images/chhoti_motor_boat_ganga_1787046797124.jpg';
+import doubleDeckerBoatImg from '../assets/images/double_decker_boat_ganga_1787046812140.jpg';
+import luxuryCruiseImg from '../assets/images/luxury_cruise_ganga_1787046825960.jpg';
 
 export const PACKAGE_TIERS: PackageTier[] = [
   {
@@ -15,7 +18,7 @@ export const PACKAGE_TIERS: PackageTier[] = [
     deckLevel: 'Single Deck Traditional Motor Boat',
     badge: 'Popular Budget',
     popular: false,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDsDsdWm0kzPy5qNpqQ8d7fL-REfua1hvEqKmG5mu9hxb9Exg69DpsnwWch5AHpigaxPrGcQdrOOWQbUfHTQMavztEJKdwpPv91McAlGj1viz1PRdIqgVKHG1HsFRffNJUsPgoL-m75bLBwl740kdVMttPaxP9yivdQ8ZvOTuZW5nVnQqdAI9vtmOQT1EMyF1xVLaXMkhIbyo2Ze91UJ6VRBHwEy0kuh-yd3mrBSpnV0nF1MtwXGJGIxg',
+    image: chhotiBoatImg,
     inclusions: [
       'Welcome Entry (शाही स्वागत)',
       '1 Bottle Packaged Mineral Water per person (1 बोतल मिनरल वाटर)',
@@ -41,7 +44,7 @@ export const PACKAGE_TIERS: PackageTier[] = [
     deckLevel: 'Dual Tier (Upper Open Deck + Lower Seating)',
     badge: 'Most Popular',
     popular: true,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFb3qMwVJzY8306sfLipjtY6KMv85W9OkszJ7lkRWqi2Tpx6RezTJ-wyuOvXTuMJxRoWpINLI9MBpzd_q1zsuQo_G7Hnq4CAGiLdmYov8uy4h3BNwPEs9RWOeP7bfno9Om7qqij3O44kCKmTSBxMrylIJtDu6nBox5s8lMfdq8HW072sfkGYpr_q6CtPg9GzSnNg1_HcNELjpR8OZOn29VxVKG_2V_ZtZtnzl0NSCj-aaE-YCDQMkPsg',
+    image: doubleDeckerBoatImg,
     inclusions: [
       'Welcome Entry (शाही स्वागत)',
       '1 Bottle Packaged Mineral Water per person (1 बोतल मिनरल वाटर)',
@@ -68,7 +71,7 @@ export const PACKAGE_TIERS: PackageTier[] = [
     deckLevel: '360° Open Sky Royal Observation Deck',
     badge: 'Ultra Luxury Flagship',
     popular: false,
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRFONyntckzDTsFjCSCBlIcKLwTqXZ8rNyJdWO0rqXfYSGWtYL87LkFE-9ypN_x7wf3Ip6MlsuWXgjD3CbxRZxK7T-jlOXogmfPpsOCnOupF5JPN8DwLtjPiKrq8iKsNdIgyLoFaxuZxVkQQAdcB5gIvGhF6VajiP9DOJ0H5tplGvC8a6yDihX47pWVBAuWG4PFDt4kngx1bPYceM4MvBks6iueF7ql9xwK2KnXHKjWLhLXKHIa0jc4w',
+    image: luxuryCruiseImg,
     inclusions: [
       'VIP Welcome Entry (शाही भव्य स्वागत)',
       '1 Bottle Packaged Mineral Water per person (1 बोतल मिनरल वाटर)',
