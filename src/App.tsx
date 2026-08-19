@@ -7,8 +7,6 @@ import { GhatsMapExplorer } from './components/GhatsMapExplorer';
 import { PackagesSection } from './components/PackagesSection';
 import { ItineraryTimeline } from './components/ItineraryTimeline';
 import { BookingFormSection } from './components/BookingFormSection';
-import { GallerySection } from './components/GallerySection';
-import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
 import { StickyMobileWhatsAppCTA } from './components/StickyMobileWhatsAppCTA';
 import { AiConciergeModal } from './components/AiConciergeModal';
@@ -63,12 +61,6 @@ export default function App() {
 
         {/* 7. Hour-by-Hour Itinerary for Nov 24, 2026 */}
         <ItineraryTimeline />
-
-        {/* 8. Visual Splendor Gallery & Lightbox */}
-        <GallerySection />
-
-        {/* 9. FAQs & Guidance */}
-        <FaqSection onOpenConcierge={() => setConciergeOpen(true)} />
       </main>
 
       {/* Footer & Final WhatsApp Booking CTA */}

@@ -64,9 +64,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
           <a href="#itinerary" className="hover:text-[#f2ca50] transition-colors">
             Itinerary
           </a>
-          <a href="#faq" className="hover:text-[#f2ca50] transition-colors">
-            FAQs
-          </a>
         </nav>
 
         {/* Primary Booking Action */}
@@ -129,13 +126,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
             className="block text-[#b8c2d6] hover:text-[#f2ca50] text-sm font-medium py-2 min-h-[44px] flex items-center"
           >
             Itinerary
-          </a>
-          <a
-            href="#faq"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block text-[#b8c2d6] hover:text-[#f2ca50] text-sm font-medium py-2 min-h-[44px] flex items-center"
-          >
-            FAQs
           </a>
           <div className="pt-3 border-t border-[#1e2535]">
             <button

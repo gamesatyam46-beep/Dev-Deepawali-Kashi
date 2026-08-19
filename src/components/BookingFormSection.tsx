@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { MessageCircle, ShieldCheck, User, Phone, Sparkles, ArrowRight, Minus, Plus, CheckCircle2, Star } from 'lucide-react';
+import { MessageCircle, ShieldCheck, User, Phone, Sparkles, ArrowRight, Minus, Plus, CheckCircle2, Star, Crown } from 'lucide-react';
 import { PACKAGE_TIERS } from '../data/kashiData';
 
 const OFFICIAL_WHATSAPP_NUMBER = '+91 8840177339';
@@ -107,18 +107,18 @@ Thank you.`;
   return (
     <section
       id="booking-form"
-      className="py-16 sm:py-24 px-4 sm:px-6 lg:px-8 bg-[#0a0d14] relative overflow-hidden border-t border-b border-[#d4af37]/30"
+      className="py-12 sm:py-18 px-4 sm:px-6 lg:px-8 bg-[#0a0d14] relative overflow-hidden border-t border-b border-[#d4af37]/30"
     >
       {/* Background Accent Glows */}
-      <div className="absolute top-1/3 left-0 w-96 h-96 bg-[#f2ca50]/5 rounded-full blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-[#25D366]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute top-1/3 left-0 w-80 h-80 bg-[#f2ca50]/5 rounded-full blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-80 h-80 bg-[#25D366]/5 rounded-full blur-3xl pointer-events-none" />
 
-      <div className="max-w-5xl mx-auto relative z-10 space-y-10 sm:space-y-12">
+      <div className="max-w-5xl mx-auto relative z-10 space-y-8 sm:space-y-10">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto space-y-3">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#25D366]/50 bg-[#101624]/90 backdrop-blur-md">
-            <MessageCircle className="w-4 h-4 text-[#25D366]" />
-            <span className="text-xs font-serif tracking-widest text-[#25D366] uppercase font-bold">
+        <div className="text-center max-w-3xl mx-auto space-y-2.5">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full border border-[#25D366]/50 bg-[#101624]/90 backdrop-blur-md">
+            <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+            <span className="text-[11px] font-serif tracking-widest text-[#25D366] uppercase font-bold">
               आधिकारिक व्हाट्सएप बुकिंग • WhatsApp Booking Portal
             </span>
           </div>
@@ -133,17 +133,17 @@ Thank you.`;
         </div>
 
         {/* Main Booking Container: Vertical stack on mobile/tablet (<1024px) */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-8 items-start">
           {/* Form Column */}
-          <div className="lg:col-span-7 bg-[#0d121d] rounded-3xl p-5 sm:p-8 border border-[#d4af37]/40 shadow-2xl space-y-6">
-            <form onSubmit={handleBookingSubmit} className="space-y-5">
+          <div className="lg:col-span-7 bg-[#0d121d] rounded-3xl p-5 sm:p-7 border border-[#d4af37]/40 shadow-2xl space-y-5">
+            <form onSubmit={handleBookingSubmit} className="space-y-4">
               
-              {/* SELECT YOUR RIDE CARDS: Vertical stack on mobile (<768px) */}
-              <div className="space-y-2">
+              {/* SELECT YOUR RIDE CARDS */}
+              <div className="space-y-1.5">
                 <label className="block text-xs font-serif font-bold uppercase tracking-wider text-[#ffe088]">
                   SELECT YOUR RIDE <span className="text-[#ff4d4d]">*</span>
                 </label>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
                   {PACKAGE_TIERS.map((tier) => {
                     const isSelected = tier.id === selectedTierId;
                     return (
@@ -151,7 +151,7 @@ Thank you.`;
                         key={tier.id}
                         type="button"
                         onClick={() => setSelectedTierId(tier.id)}
-                        className={`p-3.5 rounded-2xl text-left border transition-all flex flex-col justify-between cursor-pointer ${
+                        className={`p-3 rounded-2xl text-left border transition-all flex flex-col justify-between cursor-pointer ${
                           isSelected
                             ? 'bg-[#182338] border-2 border-[#f2ca50] shadow-[0_0_20px_rgba(212,175,55,0.3)]'
                             : 'bg-[#080c14] border-[#222c3f] hover:border-[#d4af37]/50 text-[#a5b4cb]'
@@ -159,20 +159,22 @@ Thank you.`;
                       >
                         <div>
                           <div className="flex items-center justify-between">
-                            <span className="text-xs font-serif font-bold text-white">
+                            <span className="text-xs font-serif font-bold text-white truncate pr-1">
                               {tier.name}
                             </span>
-                            {tier.id === 'luxury-cruise' && (
-                              <Star className="w-3 h-3 text-[#f2ca50] fill-[#f2ca50]" />
-                            )}
+                            {tier.id === 'luxury-cruise' ? (
+                              <Crown className="w-3 h-3 text-[#ffd700] fill-[#ffd700] shrink-0" />
+                            ) : tier.id === 'double-decker-boat' ? (
+                              <Star className="w-3 h-3 text-[#f2ca50] fill-[#f2ca50] shrink-0" />
+                            ) : null}
                           </div>
                           <div className="text-[10px] text-[#ffe088] font-serif mt-0.5">
                             {tier.hindiTitle}
                           </div>
                         </div>
 
-                        <div className="mt-3 pt-2 border-t border-[#1e293b] flex items-center justify-between">
-                          <span className="font-serif font-bold text-sm text-[#f2ca50]">
+                        <div className="mt-2 pt-1.5 border-t border-[#1e293b] flex items-center justify-between">
+                          <span className="font-serif font-bold text-xs sm:text-sm text-[#f2ca50]">
                             ₹{tier.price.toLocaleString('en-IN')}
                           </span>
                           {isSelected && (
@@ -207,8 +209,8 @@ Thank you.`;
                 )}
               </div>
 
-              {/* WHATSAPP CONTACT NUMBER & AGE: Vertical stack on mobile (<768px) */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              {/* WHATSAPP CONTACT NUMBER & AGE */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
                 {/* WhatsApp Number */}
                 <div className="space-y-1.5">
                   <label className="block text-xs font-serif font-semibold text-[#e5e2e1]">
@@ -299,11 +301,11 @@ Thank you.`;
                 />
               </div>
 
-              {/* SUBMIT BUTTON with clean text wrapping */}
+              {/* SUBMIT BUTTON */}
               <button
                 type="submit"
                 id="submit-booking-whatsapp-btn"
-                className="w-full py-4 px-4 sm:px-6 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white font-serif font-bold text-sm sm:text-base md:text-lg shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_45px_rgba(37,211,102,0.7)] transition-all flex items-center justify-center gap-2.5 active:scale-95 cursor-pointer leading-snug"
+                className="w-full py-3.5 px-4 sm:px-6 rounded-2xl bg-gradient-to-r from-[#25D366] via-[#20BA5A] to-[#128C7E] hover:from-[#22c55e] hover:to-[#15803d] text-white font-serif font-bold text-sm sm:text-base md:text-lg shadow-[0_0_30px_rgba(37,211,102,0.4)] hover:shadow-[0_0_45px_rgba(37,211,102,0.7)] transition-all flex items-center justify-center gap-2.5 active:scale-95 cursor-pointer leading-snug"
               >
                 <MessageCircle className="w-5 h-5 text-white shrink-0" />
                 <span className="text-center">CONTINUE ON WHATSAPP (+91 8840177339)</span>
@@ -313,11 +315,11 @@ Thank you.`;
           </div>
 
           {/* Dynamic Calculator & Booking Summary Column */}
-          <div className="lg:col-span-5 space-y-6">
+          <div className="lg:col-span-5 space-y-5">
             
             {/* Dynamic Calculation Card */}
-            <div className="rounded-3xl p-5 sm:p-7 bg-[#0d121d] border-2 border-[#d4af37]/60 shadow-2xl space-y-5">
-              <div className="flex items-center justify-between border-b border-[#222c3f] pb-4">
+            <div className="rounded-3xl p-5 sm:p-6 bg-[#0d121d] border-2 border-[#d4af37]/60 shadow-2xl space-y-4">
+              <div className="flex items-center justify-between border-b border-[#222c3f] pb-3">
                 <span className="text-xs font-serif uppercase tracking-widest text-[#ffe088] font-bold">
                   DYNAMIC BOOKING CALCULATOR
                 </span>
@@ -327,7 +329,7 @@ Thank you.`;
               </div>
 
               {/* Breakdown */}
-              <div className="space-y-3 text-xs sm:text-sm">
+              <div className="space-y-2.5 text-xs sm:text-sm">
                 <div className="flex justify-between items-center text-[#a5b4cb]">
                   <span>Selected Ride:</span>
                   <span className="font-serif font-bold text-white text-right">
@@ -350,7 +352,7 @@ Thank you.`;
                 </div>
 
                 {/* Total Booking Value */}
-                <div className="flex justify-between items-center pt-3 border-t border-[#1e293b] text-sm sm:text-base">
+                <div className="flex justify-between items-center pt-2.5 border-t border-[#1e293b] text-sm sm:text-base">
                   <span className="font-serif font-bold text-white">
                     Total Booking Value:
                   </span>
@@ -360,7 +362,7 @@ Thank you.`;
                 </div>
 
                 {/* Instant Confirmation Notice */}
-                <div className="p-3.5 rounded-xl bg-[#141e2e] border border-[#25D366]/40 space-y-1">
+                <div className="p-3 rounded-xl bg-[#141e2e] border border-[#25D366]/40 space-y-1">
                   <div className="flex justify-between items-center text-xs sm:text-sm font-bold text-[#25D366]">
                     <span>Total Fare:</span>
                     <span className="text-base sm:text-lg">
@@ -373,15 +375,19 @@ Thank you.`;
                 </div>
               </div>
 
-              {/* 5 Inclusions Checklist */}
+              {/* 6 Inclusions Checklist */}
               <div className="pt-2 space-y-2 border-t border-[#222c3f]">
                 <div className="text-[11px] uppercase tracking-wider text-[#ffe088] font-semibold">
-                  Included with this booking:
+                  6 Guaranteed Inclusions:
                 </div>
                 <div className="grid grid-cols-1 gap-1.5 text-xs text-[#d0c5af]">
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
-                    <span>🏮 One Sky Lantern</span>
+                    <span>⛵ Dev Deepawali 84 Ghats Tour</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
+                    <span>🏮 Sky Lantern (स्काई लालटेन)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
@@ -389,7 +395,7 @@ Thank you.`;
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
-                    <span>💧 1 Bottle Mineral Water</span>
+                    <span>💧 1 Bottle Water (मिनरल वाटर)</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <CheckCircle2 className="w-3.5 h-3.5 text-[#25D366] shrink-0" />
@@ -404,12 +410,12 @@ Thank you.`;
             </div>
 
             {/* Payment & Confirmation Flow Transparency Box */}
-            <div className="p-5 rounded-2xl bg-[#080c14] border border-[#2d384e] space-y-3 text-xs text-[#a5b4cb]">
+            <div className="p-4 sm:p-5 rounded-2xl bg-[#080c14] border border-[#2d384e] space-y-2.5 text-xs text-[#a5b4cb]">
               <div className="font-serif font-bold text-[#ffe088] flex items-center gap-1.5 text-xs">
                 <ShieldCheck className="w-4 h-4 text-[#f2ca50]" /> 4-Step Transparent Booking Flow:
               </div>
 
-              <div className="space-y-2 text-[11px]">
+              <div className="space-y-1.5 text-[11px]">
                 <div className="flex items-center gap-2 text-[#ffffff]">
                   <span className="w-5 h-5 rounded-full bg-[#172033] flex items-center justify-center text-[10px] font-bold text-[#f2ca50] shrink-0">1</span>
                   <span><strong>Choose Package:</strong> Select vessel and guest count</span>
