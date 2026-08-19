@@ -1,5 +1,6 @@
 import React from 'react';
 import { Sparkles, BookOpen, Compass, Flame } from 'lucide-react';
+import diyaStoryImg from '../assets/images/diya_story_ultra_hd_1787135911448.jpg';
 
 export const StorySection: React.FC = () => {
   return (
@@ -71,7 +72,7 @@ export const StorySection: React.FC = () => {
           <div className="lg:col-span-5">
             <div className="relative rounded-2xl overflow-hidden border border-[#d4af37]/40 shadow-[0_0_40px_rgba(212,175,55,0.25)] group">
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuDsDsdWm0kzPy5qNpqQ8d7fL-REfua1hvEqKmG5mu9hxb9Exg69DpsnwWch5AHpigaxPrGcQdrOOWQbUfHTQMavztEJKdwpPv91McAlGj1viz1PRdIqgVKHG1HsFRffNJUsPgoL-m75bLBwl740kdVMttPaxP9yivdQ8ZvOTuZW5nVnQqdAI9vtmOQT1EMyF1xVLaXMkhIbyo2Ze91UJ6VRBHwEy0kuh-yd3mrBSpnV0nF1MtwXGJGIxg"
+                src={diyaStoryImg}
                 alt="Close up of a glowing brass diya on Kashi Ghats during Dev Deepawali"
                 className="w-full h-72 sm:h-96 lg:h-[460px] object-cover group-hover:scale-105 transition-transform duration-700 brightness-115 contrast-112 saturate-115"
               />

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, MessageCircle, Clock, Sparkles } from 'lucide-react';
-import heroImageHd from '../assets/images/varanasi_razor_sharp_1787065726018.jpg';
+import heroImageHd from '../assets/images/varanasi_hero_ultra_hd_1787135784907.jpg';
 
 interface HeroProps {
   onOpenBooking: () => void;

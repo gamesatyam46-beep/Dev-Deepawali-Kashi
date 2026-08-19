@@ -1,9 +1,13 @@
 import { PackageTier, GhatInfo, CuratedMoment, ItineraryStep, AddonOption, GalleryItem, FaqItem } from '../types';
 import assiGhatImg from '../assets/images/assi_ghat_dev_deepawali_1787045955960.jpg';
 import namoGhatImg from '../assets/images/namo_ghat_dev_deepawali_1787046139285.jpg';
-import chhotiBoatImg from '../assets/images/chhoti_motor_boat_ganga_1787046797124.jpg';
-import doubleDeckerBoatImg from '../assets/images/double_decker_boat_ganga_1787046812140.jpg';
-import luxuryCruiseImg from '../assets/images/luxury_cruise_ganga_1787046825960.jpg';
+import chhotiBoatImg from '../assets/images/chhoti_boat_ultra_hd_1787135817634.jpg';
+import doubleDeckerBoatImg from '../assets/images/double_decker_ultra_hd_1787135843091.jpg';
+import luxuryCruiseImg from '../assets/images/luxury_cruise_ultra_hd_1787135867692.jpg';
+import mahaAartiImg from '../assets/images/maha_aarti_ultra_hd_1787135888387.jpg';
+import laserShowImg from '../assets/images/laser_show_ultra_hd_1787135936166.jpg';
+import grandFireShowImg from '../assets/images/fireworks_crackers_hd_1787136647590.jpg';
+import flowerDiyaArpanImg from '../assets/images/flower_diya_arpan_hd_1787136506338.jpg';
 
 export const PACKAGE_TIERS: PackageTier[] = [
   {
@@ -112,7 +116,7 @@ export const GHATS_DATA: GhatInfo[] = [
     diyaCountApprox: '75,000+ Diyas',
     aartiTime: '8:00 PM (Laser & Sound Show)',
     highlights: ['Multi-color architectural laser projections', 'Dramatic soundscapes reverberating over water', 'Illuminated stone fortress walls'],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCxGaxTEZCQBx5bTVU5nwZuLlUtQfeV630VQSNQBoyMjYHCK4DivduCwagcqMBZ23HcsPsTPh5Yskpe7lNHyq7PtdPm49fYdMsWqrkg92r2L4ZA6KkasCQYOusIeFi1SAuV_PsZk6Nvxt5R4jSpSTcrmgNsAPbwumAs54xOtiuG79RfUKCxCz0_FRH9MxHuOSUDaG-8JAQG_ZMB-ktNJgk-LGMHp4fQH0BtknTNcexHHrgCmeaojfoJIA',
+    image: laserShowImg,
     coordinatesOrder: 2
   },
   {
@@ -126,7 +130,7 @@ export const GHATS_DATA: GhatInfo[] = [
     diyaCountApprox: '3,00,000+ Diyas',
     aartiTime: '7:00 PM (Grand Maha Aarti)',
     highlights: ['21 Flaming Brass Towers (Deepams)', 'Resonant Conch Shells & Vedic Mantras', 'Front-row stationary boat anchoring'],
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFb3qMwVJzY8306sfLipjtY6KMv85W9OkszJ7lkRWqi2Tpx6RezTJ-wyuOvXTuMJxRoWpINLI9MBpzd_q1zsuQo_G7Hnq4CAGiLdmYov8uy4h3BNwPEs9RWOeP7bfno9Om7qqij3O44kCKmTSBxMrylIJtDu6nBox5s8lMfdq8HW072sfkGYpr_q6CtPg9GzSnNg1_HcNELjpR8OZOn29VxVKG_2V_ZtZtnzl0NSCj-aaE-YCDQMkPsg',
+    image: mahaAartiImg,
     coordinatesOrder: 3
   },
   {
@@ -181,7 +185,7 @@ export const CURATED_MOMENTS: CuratedMoment[] = [
     shortDesc: 'Front-row boat mooring to witness 21 Vedic priests chant sacred stotras with multi-tiered flaming brass lamps.',
     fullDesc: 'As darkness envelops the ancient river, 21 priests adorned in saffron silk take their stations at Dashashwamedh Ghat. With synchronized rhythms, blowing conches, burning incense, and towering multi-tiered brass oil lamps, the sacred chant of Har Har Gange echoes across the waters. Our vessels hold a pre-reserved stationary mooring position for prime viewing.',
     timeSlot: '7:00 PM - 7:45 PM',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAFb3qMwVJzY8306sfLipjtY6KMv85W9OkszJ7lkRWqi2Tpx6RezTJ-wyuOvXTuMJxRoWpINLI9MBpzd_q1zsuQo_G7Hnq4CAGiLdmYov8uy4h3BNwPEs9RWOeP7bfno9Om7qqij3O44kCKmTSBxMrylIJtDu6nBox5s8lMfdq8HW072sfkGYpr_q6CtPg9GzSnNg1_HcNELjpR8OZOn29VxVKG_2V_ZtZtnzl0NSCj-aaE-YCDQMkPsg',
+    image: mahaAartiImg,
     iconName: 'Flame',
     badge: 'Spiritual Pinnacle'
   },
@@ -192,7 +196,7 @@ export const CURATED_MOMENTS: CuratedMoment[] = [
     shortDesc: 'Spectacular laser beams cutting through the night sky over Chet Singh Fort, illustrating the epic of Tripurasura Samhara.',
     fullDesc: 'State-of-the-art multi-spectrum laser projectors transform the ancient 18th-century stone battlements of Chet Singh Ghat into a moving canvas. Witness the divine story of Lord Shiva destroying the three demon cities (Tripura) and why the entire celestial realm rejoices by lighting lamps in Kashi.',
     timeSlot: '8:00 PM - 8:30 PM',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCxGaxTEZCQBx5bTVU5nwZuLlUtQfeV630VQSNQBoyMjYHCK4DivduCwagcqMBZ23HcsPsTPh5Yskpe7lNHyq7PtdPm49fYdMsWqrkg92r2L4ZA6KkasCQYOusIeFi1SAuV_PsZk6Nvxt5R4jSpSTcrmgNsAPbwumAs54xOtiuG79RfUKCxCz0_FRH9MxHuOSUDaG-8JAQG_ZMB-ktNJgk-LGMHp4fQH0BtknTNcexHHrgCmeaojfoJIA',
+    image: laserShowImg,
     iconName: 'Sparkles',
     badge: 'Visual Marvel'
   },
@@ -203,7 +207,7 @@ export const CURATED_MOMENTS: CuratedMoment[] = [
     shortDesc: 'Witness the breathtaking Grand Fire Show spectacle along the illuminated Kashi Ghats from 8:40 to 8:45 PM.',
     fullDesc: 'Experience the exhilarating 5-minute Grand Fire Show spectacle along the holy river Ganges, with magnificent fire dancing, pyrotechnic choreography, and luminous golden flames reflecting brilliantly across the water.',
     timeSlot: '8:40 PM - 8:45 PM',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAOXanjjYIkW1jTMupyblNx7UE-X2aXHbi_UBctHM6I468sKCf1IrGyioNRkUQ6Iogg_rrWdvVpwcl-nWL4z6WsewtaXggPuYzlDFdlc2PS2IpW90hIo_0jYeSkDtlCiB9EONayOIMo8L2Q_1xY_sev-pgq4UUs4dUOaK0S9NCGrgZcN6rb5y6B7rsXNbN8YDsI8nEcRBtC2CeXntd6cVe2ZjKxQVMP7dE_lx6wSWVQykjQenOaA0WaaA',
+    image: grandFireShowImg,
     iconName: 'Flame',
     badge: 'Fire Spectacle'
   },
@@ -214,7 +218,7 @@ export const CURATED_MOMENTS: CuratedMoment[] = [
     shortDesc: 'Sail across the 7-kilometer crescent of all 84 ghats from 4:30 PM to 9:00 PM with welcome entry, flower diya Ganga arpan, and memento.',
     fullDesc: 'Glide serenely across Mother Ganga from 4:30 to 9:00 PM as the entire ghat embankment glimmers with over one million diyas. Every guest is gifted a sacred flower diya for personal Ganga arpan, packaged mineral water, prime Fire Show viewing (8:40 - 8:45 PM), and a cherished memento.',
     timeSlot: '4:30 PM - 9:00 PM',
-    image: 'https://lh3.googleusercontent.com/aida-public/AB6AXuCRFONyntckzDTsFjCSCBlIcKLwTqXZ8rNyJdWO0rqXfYSGWtYL87LkFE-9ypN_x7wf3Ip6MlsuWXgjD3CbxRZxK7T-jlOXogmfPpsOCnOupF5JPN8DwLtjPiKrq8iKsNdIgyLoFaxuZxVkQQAdcB5gIvGhF6VajiP9DOJ0H5tplGvC8a6yDihX47pWVBAuWG4PFDt4kngx1bPYceM4MvBks6iueF7ql9xwK2KnXHKjWLhLXKHIa0jc4w',
+    image: flowerDiyaArpanImg,
     iconName: 'Ship',
     badge: 'Divine Passage'
   }

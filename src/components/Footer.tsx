@@ -44,8 +44,8 @@ export const Footer: React.FC<FooterProps> = ({ onOpenBooking, onOpenConcierge }
           <ul className="space-y-2 text-[#d0c5af]">
             <li><a href="#experiences" className="hover:text-[#f2ca50] transition-colors">21-Priest Maha Ganga Aarti</a></li>
             <li><a href="#experiences" className="hover:text-[#f2ca50] transition-colors">3D Laser & Heritage Mapping</a></li>
-            <li><a href="#experiences" className="hover:text-[#f2ca50] transition-colors">Vedic Drone & Sky Fireworks</a></li>
-            <li><a href="#experiences" className="hover:text-[#f2ca50] transition-colors">Sky Lantern & Flower Diya Arpan</a></li>
+            <li><a href="#experiences" className="hover:text-[#f2ca50] transition-colors">Grand Fire Show (8:40 - 8:45 PM)</a></li>
+            <li><a href="#experiences" className="hover:text-[#f2ca50] transition-colors">Flower Diya Arpan</a></li>
             <li><a href="#ghats" className="hover:text-[#f2ca50] transition-colors">84 Ghats Cruise Route</a></li>
           </ul>
         </div>
